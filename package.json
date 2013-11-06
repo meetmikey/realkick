@@ -1,0 +1,17 @@
+{
+  "name": "realkick",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "express": "=3.2.0"
+    , "underscore" : "=1.5.1"
+    , "async": "=0.2.7"
+    , "ejs": "=0.8.3"
+    , "express-validator" : "=0.3.2"
+    , "winston" : "=0.6.2"
+    , "mongoose": "=3.6.12"
+  },
+  "engines": {
+    "node": "0.10.5"
+  }
+}
