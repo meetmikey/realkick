@@ -20,7 +20,14 @@
       return {};
     };
 
-    Base.prototype.fetch = function() {};
+    Base.prototype.fetch = function(options) {
+      options = options || {};
+      options.data = options.data || {};
+      RealKick.Helper.LocalStore.set('userShortId', 1);
+      options.data.userShortId = RealKick.Helper.LocalStore.get('userShortId');
+      console.log('options: ', options);
+      return Base.__super__.fetch.call(this, options);
+    };
 
     return Base;
 
