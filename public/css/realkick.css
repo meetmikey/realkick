@@ -1,6 +1,7 @@
 body {
   background-color: #fff;
   font-weight: 300;
+  color: #333;
 }
 .container {
   padding: 0px;
@@ -8,7 +9,7 @@ body {
 .fake-phone {
   background-image: url('../img/phone.png');
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   width: 420px;
   height: 792px;
   left: 40%;
@@ -24,7 +25,11 @@ body {
   margin-right: auto;
   margin-top: 116px;
   position: relative;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.fake-screen -webkit-scrollbar {
+  display: none;
 }
 .top-bar {
   height: 26px;
@@ -66,6 +71,7 @@ body {
   line-height: 24px;
   padding: 4px 0px 10px 0px;
   font-weight: 900;
+  display: inline-block;
 }
 img.ios-header {
   width: 316px;
@@ -75,11 +81,12 @@ img.ios-header {
 .essential-data {
   width: 100%;
   margin: 0px auto 14px auto;
-  background-color: #2988cc;
+  background-color: #333;
   color: #fff;
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 24px;
+  line-height: 24px;
   font-family: 'Open Sans Condensed', sans-serif;
+  border-bottom: 1px solid #000;
 }
 .essential-data tr {
   width: 100%;
@@ -90,17 +97,43 @@ img.ios-header {
   padding-bottom: 8px;
   padding-top: 8px;
 }
-.essential-data td:first-child {
-  padding-left: 10px;
-}
-.essential-data td:last-child {
-  padding-right: 10px;
+.essential-data small {
+  font-size: 60%;
 }
 .map img {
   width: 100%;
 }
 .footer {
-  height: 48px;
+  height: 54px;
+  position: fixed;
+  top: 662px;
+  background-color: #fff;
+  border-top: #333 1px solid;
+  width: 316px;
+}
+.footer table {
+  width: 316px;
+  text-align: center;
+}
+.footer table td {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 900;
+  padding: 8px;
+  color: #333;
+  border-right: 1px solid #ccc;
+}
+.footer table td:last-child {
+  border-right: none;
+}
+.footer table td.no {
+  color: #f46c62;
+}
+.footer table td.maybe {
+  color: #f48e69;
+}
+.footer table td.yes {
+  color: #52cc7e;
 }
 .commute {
   margin-left: 10px;
@@ -143,4 +176,32 @@ img.ios-header {
 }
 .public-remarks {
   padding: 10px 14px 10px 14px;
+}
+.header-button {
+  font-size: 18px;
+  line-height: 18px;
+  margin: 4px 6px 0px 6px;
+  width: 24px;
+}
+.header-nav {
+  display: block;
+  height: 40px;
+}
+.header-nav table {
+  width: 100%;
+}
+.agent {
+  width: 40px;
+  float: left;
+  display: inline-block;
+}
+.agent img {
+  width: 40px;
+}
+.comment {
+  padding: 4px 10px 0px 10px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  width: 276px;
 }

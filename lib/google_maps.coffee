@@ -17,11 +17,8 @@ GoogleMaps.getDirections = (from, to, mode, cb) ->
   #TODO: make opposite request to get round trip time
   request GoogleMaps.constructURL(apiURL, params), (err, res, body)->
     if !err && res.statusCode == 200
-      try
-        jsonData = JSON.parse(body)
-        cb null, GoogleMaps.extractDurationDistance jsonData
-      catch e
-        cb e
+      jsonData = JSON.parse(body)
+      cb null, GoogleMaps.extractDurationDistance jsonData
     else
       console.error 'invalid resposne from GoogleMaps', {err : err, code : res?.statusCode}
       cb {err : err, code : res?.statusCode}

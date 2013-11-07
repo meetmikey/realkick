@@ -23,7 +23,7 @@ exports.getAugmentedListingData = (listing, user, callback) =>
         (commute, eachCb) ->
           GoogleMaps.getDirections listingUtils.getLatLong(listing), commute.address, commute.mode, (err, gmData) ->          
             console.log err if err
-            eachCb null, {name : commute.name, data : gmData}
+            eachCb null, {name : commute.name, data : gmData, mode : commute.mode}
         (err, results) ->
           console.log err if err
           cb null, results

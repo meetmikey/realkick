@@ -22,11 +22,8 @@ RentMetrics.getAveragePrices = (data, cb) ->
 
   request RentMetrics.constructURL(requestParams), (err, res, body)=>
     if !err && res.statusCode == 200
-      try
-        jsonBody = JSON.parse(body)
-        cb null, RentMetrics.computePricePercentiles jsonBody
-      catch e
-        cb e      
+      jsonBody = JSON.parse(body)
+      cb null, RentMetrics.computePricePercentiles jsonBody
     else
       console.log 'invalid response from rent metrics', {err : err, code : res.statusCode}
       cb err

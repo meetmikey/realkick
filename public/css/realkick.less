@@ -1,10 +1,17 @@
 @blue: #2988cc;
 @brand:'Yanone Kaffeesatz', sans-serif;
 @brand2:'Open Sans Condensed', sans-serif;
+@red: #F46C62;
+@orange: #F48E69;
+@yellow: #F7AD5E;
+@light-green: #9AD685;
+@green: #52CC7E;
+@light-blue: #62CBFF;
 
 body {
   background-color: #fff;
   font-weight: 300;
+  color: #333;
 }
 
 .container {
@@ -14,7 +21,7 @@ body {
 .fake-phone {
 	background-image:url('../img/phone.png');
 	background-repeat:no-repeat;
-	position: absolute;
+	position: fixed;
 	width: 420px;
 	height: 792px;
 	left: 40%;
@@ -31,7 +38,11 @@ body {
 	margin-right: auto;
 	margin-top: 116px;
 	position: relative;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	& -webkit-scrollbar { 
+    display: none; 
+	}
 }
 
 .top-bar {
@@ -80,6 +91,7 @@ filter: none;
 	line-height: 24px;
 	padding: 4px 0px 10px 0px;
 	font-weight: 900;
+	display: inline-block;
 	}
 }
 
@@ -93,11 +105,12 @@ img.ios-header {
 .essential-data {
 	width: 100%;
 	margin: 0px auto 14px auto;
-	background-color: @blue;
+	background-color: #333;
 	color: #fff;
-	font-size: 20px;
-	line-height: 20px;
+	font-size: 24px;
+	line-height: 24px;
 	font-family: @brand2;
+	border-bottom: 1px solid #000;
 	
 	& tr {
 		width: 100%;
@@ -107,13 +120,18 @@ img.ios-header {
 		font-weight: 100;
 		padding-bottom: 8px;
 		padding-top: 8px;
+		
 		&:first-child {
-			padding-left:10px;
+
 		}
 		&:last-child {
-			padding-right: 10px;
+		
+
 		}
 
+	}
+	& small {
+		font-size: 60%;
 	}
 }
 
@@ -124,7 +142,36 @@ img.ios-header {
 }
 
 .footer {
-	height: 48px;
+	height: 54px;
+	position: fixed;
+	top: 662px;
+	background-color: #fff;
+	border-top: #333 1px solid;
+	width: 316px;
+	& table {
+		width: 316px;
+		text-align: center;
+		 & td {
+		 	font-size: 28px;
+		 	line-height: 28px;
+		 	font-weight: 900;
+		 	padding: 8px;
+		 	color: #333;
+		 	border-right: 1px solid #ccc;
+		 	&:last-child {
+		 		border-right: none;
+		 	}
+		 	&.no {
+		 		color: @red;
+		 	}
+		 	&.maybe {
+		 		color:@orange;
+		 	}
+		 	&.yes {
+		 		color:@green;
+		 	}
+		 }
+	}
 }
 
 .commute {
@@ -170,4 +217,36 @@ img.ios-header {
 
 .public-remarks {
 	padding: 10px 14px 10px 14px;
+}
+
+.header-button {
+	font-size: 18px;
+	line-height: 18px;
+	margin: 4px 6px 0px 6px;
+	width: 24px;
+}
+
+.header-nav {
+	display: block;
+	height: 40px;
+	& table {
+		width: 100%;
+	}
+}
+
+.agent {
+	width: 40px;
+	float: left;
+	display: inline-block;
+	& img {
+		width: 40px;
+	}
+}
+
+.comment {
+	padding: 4px 10px 0px 10px;
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: 276px;
 }
