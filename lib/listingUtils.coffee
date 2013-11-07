@@ -57,5 +57,12 @@ exports.getAugmentedListingData = (listing, user, callback) =>
       transitScore : results[2]
       yelp : results[3]
 
-    console.log apiData
+    floor = 45
+    ceiling = 94
+    apiData.random = {}
+    apiData.random.walkScore = floor + Math.floor( Math.random() * ( ceiling - floor ) )
+    apiData.random.safetyScore = floor + Math.floor( Math.random() * ( ceiling - floor ) )
+    apiData.random.transitScore = floor + Math.floor( Math.random() * ( ceiling - floor ) )
+    apiData.random.schoolsScore = floor + Math.floor( Math.random() * ( ceiling - floor ) )
+    #console.log apiData
     callback null, apiData

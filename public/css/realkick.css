@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 img {
   width: 100%;
   height: auto;
-=======
+}
 ::-webkit-scrollbar {
   display: none;
->>>>>>> 688485494885d0aa7e7d33ffdbd92a40a82a0288
 }
 body {
   background-color: #fff;

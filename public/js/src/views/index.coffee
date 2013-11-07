@@ -102,7 +102,7 @@ template = """
 				<tr>
 					<td>
 						<div class="score">
-							{{augmentedData.walkScore.walkscore}}
+							{{augmentedData.random.walkScore}}
 						</div>
 						<div class="score-label">
 							walking
@@ -110,7 +110,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							93
+							{{augmentedData.random.safetyScore}}
 						</div>
 						<div class="score-label">
 							safety
@@ -118,7 +118,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							85
+							{{augmentedData.random.transitScore}}
 						</div>
 						<div class="score-label">
 							transit
@@ -126,7 +126,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							40
+							{{augmentedData.random.schoolsScore}}
 						</div>
 						<div class="score-label">
 							schools
