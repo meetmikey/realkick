@@ -3,6 +3,7 @@ request = require 'request'
 conf = require '../conf'
 
 GoogleMaps = this
+departure_time = new Date(2013, 10, 7, 8, 0, 0, 0)
 
 GoogleMaps.getDirections = (from, to, mode, cb) ->
   apiURL = conf.GoogleMaps.DirectionsURL
@@ -10,7 +11,7 @@ GoogleMaps.getDirections = (from, to, mode, cb) ->
     origin : from
     destination : to
     mode : mode
-    departure_time : Date.now() - (Date.now % 3600*24) + 16*24*3600 #8 AM PST
+    departure_time : departure_time.getTime()
     sensor : false
 
   #TODO: make opposite request to get round trip time
