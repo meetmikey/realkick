@@ -58,4 +58,4 @@ exports.getAugmentedListingData = (listing, user, callback) =>
       yelp : results[3]
 
     console.log apiData
-    callback apiData
+    callback null, apiData

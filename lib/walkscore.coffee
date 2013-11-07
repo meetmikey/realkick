@@ -19,9 +19,11 @@ WalkScore.getWalkScore = (address, latitude, longitude, cb) ->
     if !err && res.statusCode == 200
       try
         jsonData = JSON.parse(body)
+        console.log 'CALLBACK 1'
         cb null, jsonData
       catch e
-        cb e
+        console.log 'CALLBACK 2'
+        #cb e
     else
       console.error 'invalid resposne from walkscore', {err : err, code : res?.statusCode}
       cb {err : err, code : res?.statusCode}

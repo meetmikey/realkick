@@ -15,8 +15,9 @@ exports.getListing = function( req, res ) {
       winston.handleError( err, res );
 
     } else {
+      console.log('no error')
       listing.augmentedData = augmentedListingData;
-      res.send( augmentedListing );
+      res.send( listing );
     }
   });
 }
