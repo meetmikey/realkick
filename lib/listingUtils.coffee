@@ -33,7 +33,7 @@ exports.getAugmentedListingData = (listing, user, callback) =>
         cb null, wsData
     (cb) ->
       #get transit data
-      WalkScore.getTransitScore listing.County, listing.State, listing.Coordinates.Latitude, listing.Coordinates.Longitude, (err, wsData) ->
+      WalkScore.getTransitScore listing.County, 'CA', listing.Coordinates.Latitude, listing.Coordinates.Longitude, (err, wsData) ->
         console.log err if err
         cb null, wsData
     (cb) ->
