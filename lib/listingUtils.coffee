@@ -18,11 +18,11 @@ exports.getAugmentedListingData = (listing, user, callback) =>
   async.parallel [
     (cb) ->
       #compute commuting time for self
-      async.eachSeries user.commutes,
+      async.map user.commutes,
         (commute, eachCb) ->
           GoogleMaps.getDirections listingUtils.getLatLong(listing), commute.address, commute.mode, (err, gmData) ->          
             console.log err if err
-            eachCb null, gmData
+            eachCb null, {name : commute.name, data : gmData}
         (err, results) ->
           console.log err if err
           cb null, results
@@ -38,16 +38,16 @@ exports.getAugmentedListingData = (listing, user, callback) =>
         cb null, wsData
     (cb) ->
       #get yelp data for each search term
-      async.eachSeries user.yelpTerms,
+      async.map user.yelpTerms,
         (term, eachCb) ->
           Yelp.search term,
             listingUtils.getLatLong(listing),
             (err, data) ->
               eachCb(err) if err
               console.log 'YELP DATA', data
-              eachCb null, {term : data}
+              eachCb null, {term : term, data: data}
         (err, results)->
-          console.log results
+          console.log 'RESULTS', results
           console.log err if err
           cb null, results
   ],
