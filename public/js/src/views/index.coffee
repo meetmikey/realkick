@@ -24,24 +24,13 @@ template = """
                   
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
-                    <div class="item active">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_101_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_A01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_B01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_C01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_D01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_G01_81.jpg">
-                    </div>
+                    {{#each photos}}
+                      {{#if Location}}
+                        <div class="item {{#if @index}}{{else}} active{{/if}}">
+                          <img src="{{Location}}">
+                        </div>
+                      {{/if}}
+                    {{/each}}
                   </div>
 
                   <!-- Controls -->
@@ -79,20 +68,27 @@ template = """
                   </div>
                   {{/each}}
 
-	  	<div class="commute clearfix">
-	  		<div class="icon check">
-	  		</div>
-	  		<div class="time">
-	  			Garage Parking
-	  		</div>
-	  	</div>
-	  	<div class="commute clearfix">
-	  		<div class="icon check">
-	  		</div>
-	  		<div class="time">
-	  			Balcony
-	  		</div>
-	  	</div>
+      {{#if hasGarageParking}}
+  	  	<div class="commute clearfix">
+  	  		<div class="icon check">
+  	  		</div>
+  	  		<div class="time">
+  	  			Garage Parking
+  	  		</div>
+  	  	</div>
+      {{/if}}
+      
+      {{#if hasFireplace}}
+      <div class="commute clearfix">
+        <div class="icon check">
+        </div>
+        <div class="time">
+          Fireplace
+        </div>
+      </div>
+      {{/if}}
+
+      {{#if hasPool}}
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
@@ -100,6 +96,7 @@ template = """
 	  			Swimming Pool
 	  		</div>
 	  	</div>
+      {{/if}}
 	 	<div class="scores">
 			<table>
 				<tr>
@@ -168,63 +165,65 @@ template = """
 		</div>
 	</div>
 	
-	<div class="no super-box">
+	<div class="no super-box" id="noBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				price
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				neighborhood
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				floorplan
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				other
 			</div>
 		</div>
 	</div>
 
-	<div class="maybe super-box">
+	<div class="maybe super-box" id="maybeBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				save for later
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				ask brian
 			</div>
 		</div>
 	</div>
 
-	<div class="yes super-box">
+	<div class="yes super-box" id="yesBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				call brian
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToStaticB">
 				book a viewing
 			</div>
 		</div>
 	</div>
 
 	<div class="footer">
-		<div class="agent-comment">
-			<div class="agent">
-				<img src="img/agent.png">
-			</div>
-			<div class="comment">
-				Up and coming neighborhood. Great nightlife. Nice touches - Bamboo floors!!!
-			</div>
-		</div>
+    {{#each comments}}
+  		<div class="agent-comment">
+  			<div class="agent">
+  				<img src="{{userImageURL}}">
+  			</div>
+  			<div class="comment">
+  				{{text}}
+  			</div>
+  		</div>
+    {{/each}}
 		<table>
 			<tr>
-				<td class="no">
+				<td class="no" id="noButton">
 					<div class="glyphicon glyphicon-remove"></div>
 				</td>
-				<td class="maybe">
+				<td class="maybe" id="maybeButton">
 					<div style="font-size:36px; line-height:36px; padding-top: 2px;">?</div>
 				</td>
-				<td class="yes">
+				<td class="yes" id="yesButton">
 					<div class="glyphicon glyphicon-ok"></div>
 				</td>
 			</tr>
@@ -232,11 +231,6 @@ template = """
 	</div>
  </div>
 </div>
-<script>
-$('#listing-carousel').carousel({
-  interval: 3000
-})
-</script>
 """
 
 class RealKick.View.Index extends RealKick.View.Base
@@ -244,18 +238,66 @@ class RealKick.View.Index extends RealKick.View.Base
   templateHTML: template
 
   listing: null
+  events:
+    'click #noButton': 'showNo'
+    'click #maybeButton': 'showMaybe'
+    'click #yesButton': 'showYes'
+    'click .goToNextListing': 'goToNextListing'
+    'click .goToStaticB': 'goToStaticB'
+
+  showNo: =>
+    $('#noBox').css 'visibility', 'visible'
+
+  showMaybe: =>
+    $('#maybeBox').css 'visibility', 'visible'
+
+  showYes: =>
+    $('#yesBox').css 'visibility', 'visible'
+
+  listings: []
+  listing: null
+  maxListings: 4
+
+  goToNextListing: =>
+    @listingId++
+    if @listingId > @maxListings
+      @listingId = 1
+    @listing = @listings[@listingId]
+    @render()
+
+  goToStaticB: =>
+    RealKick.Router.router.navigate 'b', {trigger:true}
 
   postInitialize: =>
-    @listing = new RealKick.Model.Listing
-      id: @listingId
+    @initializeListings()
+    @fetchListings()
+    @listing = 1
+    @listing = @listings[@listingId]
 
-  postRender: =>
-    @listing.fetch
-      success: () =>
-        @renderTemplate()
-      error: () =>
-        console.log 'failed to get listing: ', @listing
+  initializeListings: =>
+    listings = []
+    for i in [1..@maxListings]
+      @listings[i] = new RealKick.Model.Listing
+        id: i
+    @listing = @listings[@listingId]
+
+  fetchListings: =>
+    for i in [1..@maxListings]
+      @listings[i] = new RealKick.Model.Listing
+        id: i
+      @listings[i].fetch
+        success: () =>
+          @renderTemplate()
 
   getTemplateData: =>
-    data = @listing.decorate()
+    data = {}
+    if @listing
+      data = @listing.decorate()
+      commentsCollection = new RealKick.Collection.Comment
+      commentsCollection.set @listing.get('comments')
+      data.comments = _.invoke( commentsCollection.models, 'decorate' )
     data
+
+  postRender: =>
+    $('#listing-carousel').carousel
+      interval: 3000

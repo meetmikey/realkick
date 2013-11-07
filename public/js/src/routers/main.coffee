@@ -1,5 +1,6 @@
 class RealKick.Router.Main extends Backbone.Router
   routes:
+    'home': 'index'
     '': 'index'
     'listing/:listingId': 'listing'
     'a': 'staticA'
