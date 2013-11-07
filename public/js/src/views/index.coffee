@@ -5,7 +5,7 @@ template = """
   	<div class="header">
 		<img class="ios-header" src="img/ios-top.png" style="width:316px;">
 		<div class="text">
-			{{address}}
+			{{internetListing}}
 		</div>
 	 </div>
   	<div class="container">
@@ -53,31 +53,33 @@ template = """
 		<table class="essential-data">
 	  		<tr>
 	  			<td>
-	  				$3,496,000
+	  				${{listingPrice}}
 	  			</td>
 	  			<td>
-	  				4 <small>BD</small>
+	  				{{numBedrooms}} <small>BD</small>
 	  			</td>
 	  			<td>
-	  				5 <small>BA</small>
+	  				{{numBathrooms}} <small>BA</small>
 	  			</td>
 	  			<td>
-	  				590 <small>SQFT</small> 
+	  				{{squareFeet}} <small>SQFT</small> 
 	  			</td>
 	  		</tr>
 	  	</table>
 	  	<div class="commute clearfix">
-	  		<div class="icon bike">
-	  		</div>
-	  		<div class="time">
-	  			15 minutes to YourCompany
-	  		</div>
+	  		{{#each augmentedData.googleMaps}}
+		  		<div class="icon bike">
+		  		</div>
+		  		<div class="time">
+		  			{{this.duration}} to {{@key}}
+		  		</div>
+	  		{{/each}}
 	  	</div>
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			2 car garage
+	  			garage parking
 	  		</div>
 	  	</div>
 	  	<div class="commute clearfix">
@@ -99,7 +101,7 @@ template = """
 				<tr>
 					<td>
 						<div class="score">
-							87
+							{{augmentedData.walkScore.walkscore}}
 						</div>
 						<div class="label">
 							walking
@@ -115,7 +117,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							88
+							{{augmentedData.transitScore.transit_score}}
 						</div>
 						<div class="label">
 							transit
@@ -123,7 +125,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							68
+							40
 						</div>
 						<div class="label">
 							schools
@@ -133,7 +135,7 @@ template = """
 			</table>
 		</div>
 		<div class="public-remarks">
-			"Live in the exclusive, exquisite Electra. Open and spacious unit located on the 16th floor with panoramic views of the city. Bamboo flooring, travertine throughout both baths, private balcony with incredible views. Open Kitchen with granite counters, Bosh and Thermador appliances.  Featured amenities include: sauna, steam room, fitness center, outdoor seating, pool, spa, BBQ area and concierge services."
+			{{publicRemarks}}
 		</div>
 	</div>
   </div>

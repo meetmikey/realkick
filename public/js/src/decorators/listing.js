@@ -17,6 +17,7 @@
       }
       object.photos = model.get('Photos');
       object.address = model.get('Address');
+      object.internetListing = model.get('InternetListing');
       object.listingPrice = model.get('ListingPrice');
       object.numBedrooms = model.get('NumberOfBedrooms');
       object.numBathrooms = this.getNumberOfBaths(model);
@@ -24,13 +25,15 @@
       object.listingDate = model.get('ListingDate');
       object.hasGarageParking = model.get('NumberOfGarageSpaces') ? true : false;
       object.yearBuilt = model.get('YearHomeBuilt');
+      object.publicRemarks = model.get('PublicRemarks');
+      object.augmentedData = model.get('augmentedData');
       return object;
     };
 
     ListingDecorator.prototype.getNumberOfBaths = function(model) {
       var fullBaths, halfBaths, totalBaths;
-      fullBaths = model.get('NumberOfBaths');
-      halfBaths = model.get('NumberOfHalfBaths');
+      fullBaths = Number(model.get('NumberOfBaths'));
+      halfBaths = Number(model.get('NumberOfHalfBaths'));
       if (!fullBaths) {
         fullBaths = 0;
       }
