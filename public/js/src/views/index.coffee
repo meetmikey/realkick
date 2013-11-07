@@ -2,11 +2,19 @@ template = """
 
 <div class="fake-phone">
   <div class="fake-screen">
-  	<div class="header">
-		<img class="ios-header" src="img/ios-top.png" style="width:316px;">
-		<div class="text">
-			700 West E Street
-		</div>
+  	<div class="header clearfix">
+		<div class="ios-header clearfix"><img src="img/ios-top.png" style="width:316px;"></div>
+				<div class="header-nav clearfix">
+					<div class="header-button pull-left">
+						<div class="glyphicon glyphicon-align-justify"></div>
+					</div>
+					<div class="text">
+							{{address}} Testing
+					</div>
+					<div class="header-button pull-right">
+						<div style="font-size: 20px; line-height: 20px;" class="glyphicon glyphicon-cog"></div>
+					</div>
+				</div>
 	 </div>
   	<div class="container">
 
@@ -137,19 +145,24 @@ template = """
 		</div>
 	</div>
 	<div class="footer">
+		<div class="agent-comment">
+			<div class="agent">
+				<img src="img/agent.png">
+			</div>
+			<div class="comment">
+				Up and coming neighborhood. Great nightlife. Nice touches - Bamboo floors!!!
+			</div>
+		</div>
 		<table>
 			<tr>
-				<td>
-					<span class="glyphicon gyphicon-remove"></span>
+				<td class="no">
+					<div class="glyphicon glyphicon-remove"></div>
 				</td>
-				<td>
-					?
+				<td class="maybe">
+					<div style="font-size:36px; line-height:36px; padding-top: 2px;">?</div>
 				</td>
-				<td>
-					<span class="glyphicon gyphicon-repeat"></span>
-				</td>
-				<td>
-					<span class="glyphicon gyphicon-ok"></span>
+				<td class="yes">
+					<div class="glyphicon glyphicon-ok"></div>
 				</td>
 			</tr>
 		</table>
@@ -166,3 +179,20 @@ $('#listing-carousel').carousel({
 class RealKick.View.Index extends RealKick.View.Base
 
   templateHTML: template
+
+  listing: null
+
+  postInitialize: =>
+    @listing = new RealKick.Model.Listing
+      id: @listingId
+
+  postRender: =>
+    @listing.fetch
+      success: () =>
+        @renderTemplate()
+      error: () =>
+        console.log 'failed to get listing: ', @listing
+
+  getTemplateData: =>
+    data = @listing.decorate()
+    data

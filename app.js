@@ -9,7 +9,7 @@ var express = require('express'),
     winston = require ('./lib/winstonWrapper').winston;
 
 var initActions = [
-  //appInitUtils.CONNECT_MONGO
+  appInitUtils.CONNECT_MONGO
 ];
 
 //initApp() will not callback an error.
@@ -41,9 +41,11 @@ appInitUtils.initApp( 'realkick', initActions, conf, function() {
   });
 
 
-
-
   app.get('/listing', function(req, res) {
+    routes.getListing(req, res);
+  });
+
+  app.get('/listing/:id', function(req, res) {
     routes.getListing(req, res);
   });
 

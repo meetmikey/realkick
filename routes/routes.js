@@ -3,44 +3,33 @@ var winston = require('../lib/winstonWrapper').winston
     , constants = require ('../constants')
     , _ = require ('underscore')
     , listingUtils = require('../lib/listingUtils')
+    , UserModel = require('../schema/user').UserModel
 
 var routes = this;
 
 exports.getListing = function( req, res ) {
   listing = listingJSON;
-  user = userJSON;
-  listingUtils.getAugmentedListingData( listing, user, function(err, augmentedListingData) {
-    if ( err ) {
-      winston.handleError( err, res );
+  console.log 'getListing, req.data: ', req.data, ', req.params: ', req.params
+  var shortId = req.params.userShortId;
+  UserModel.findOne({shortId: shortId}, function(mongoErr, user) {
+    if ( mongoErr ) {
+      winston.doMongoError( mongoErr, {}, res );
+
+    } else if ( ! user ) {
+      winston.doError( 'no user', {}, res );
 
     } else {
-      listing.augmentedData = augmentedListingData;
-      res.send( listing );
-    }
-  });
-}
+      listingUtils.getAugmentedListingData( listing, user, function(err, augmentedListingData) {
+        if ( err ) {
+          winston.handleError( err, res );
 
-var userJSON = {
-    email: 'imronburgundy@gmail.com'
-  , owner1: 'Ron Burgundy'
-  , owner2: 'Veronica Corningstone'
-  , commutes: [
-    {
-        name: "Ron's work"
-      , mode : 'driving'
-      , address : '7191 Engineer Rd, San Diego, CA'
+        } else {
+          listing.augmentedData = augmentedListingData;
+          res.send( listing );
+        }
+      });
     }
-    , {
-        name: "Veronica's work"
-      , mode: 'bicycling'
-      , address: '2920 Zoo Dr, San Diego, CA'
-    }
-    ]
-  , yelpTerms: [
-      'starbucks'
-    , 'dive bar'
-    , 'jazz'
-    ]
+  })
 }
 
 var listingJSON = {

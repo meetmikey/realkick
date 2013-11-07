@@ -1,8 +1,5 @@
 var mongoose = require('mongoose'),
     conf     = require ('../conf'),
-    bases     = require ('bases'),
-    constants = require ('../constants'),
-    CounterModel = require ('./counter').CounterModel,
     Schema   = mongoose.Schema;
 
 var commuteSchema = new Schema ({
@@ -12,9 +9,10 @@ var commuteSchema = new Schema ({
 });
 
 var User = new Schema({
-    email: {type: String, unique: true, lowercase: true},
-  , owner1: {type: String},
-  , owner2: {type: String},
+    shortId: {type: Number}
+  , email: {type: String, unique: true, lowercase: true}
+  , owner1: {type: String}
+  , owner2: {type: String}
   , commutes: {type: [commuteSchema], default :[]}
   , yelpTerms: [String]
 });

@@ -4,3 +4,6 @@ class RealKick.Model.Base extends Backbone.Model
     if @decorator
       return @decorator.decorate this
     return {}
+
+  fetch: =>
+    
