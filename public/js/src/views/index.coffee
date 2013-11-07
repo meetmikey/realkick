@@ -136,6 +136,24 @@ template = """
 			"Live in the exclusive, exquisite Electra. Open and spacious unit located on the 16th floor with panoramic views of the city. Bamboo flooring, travertine throughout both baths, private balcony with incredible views. Open Kitchen with granite counters, Bosh and Thermador appliances.  Featured amenities include: sauna, steam room, fitness center, outdoor seating, pool, spa, BBQ area and concierge services."
 		</div>
 	</div>
+	<div class="footer">
+		<table>
+			<tr>
+				<td>
+					<span class="glyphicon gyphicon-remove"></span>
+				</td>
+				<td>
+					?
+				</td>
+				<td>
+					<span class="glyphicon gyphicon-repeat"></span>
+				</td>
+				<td>
+					<span class="glyphicon gyphicon-ok"></span>
+				</td>
+			</tr>
+		</table>
+	</div>
   </div>
 </div>
 <script>
