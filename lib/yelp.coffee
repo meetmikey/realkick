@@ -10,7 +10,7 @@ yelpClient = yelp.createClient
 Yelp = this
 
 Yelp.search = (term, ll, cb) ->
-  yelpClient.search {term : term, ll : ll}, (err, data) ->
+  yelpClient.search {term : term, ll : ll, limit : 3}, (err, data) ->
     if err
       cb err
     else

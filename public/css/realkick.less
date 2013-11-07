@@ -1,3 +1,7 @@
+@blue: #2988cc;
+@brand:'Yanone Kaffeesatz', sans-serif;
+@brand2:'Open Sans Condensed', sans-serif;
+
 body {
   background-color: #fff;
 }
@@ -20,7 +24,7 @@ body {
 .fake-screen {
 	background-color: #fff;
 	width:316px;
-	height:562px;
+	height:559px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 116px;
@@ -43,6 +47,8 @@ filter: none;
 }
 
 #listing-carousel {
+	max-height: 220px;
+	overflow: hidden;
 	& .carousel-inner>.item>img, .carousel-inner>.item>a>img {
 		width: 100%;
 		height: auto;
@@ -55,22 +61,104 @@ filter: none;
 }
 
 .header {
+	
+	background-color: #fff;
+	position: fixed;
+	z-index: 15;
+	opacity: 0.8;
+	display: block;
+	border-bottom: 1px solid #000;
 	text-align: center;
+	width: 316px;
+	& .text {
+	color: #000;
+	opacity: 1;
+	font-family: @brand;
 	font-size: 24px;
-	font-weight: 100;
-	text-transform: uppercase;
-	margin-top: 4px;
+	line-height: 24px;
+	padding: 4px 0px 10px 0px;
+	font-weight: 900;
+	}
+}
+
+img.ios-header {
+	width: 316px;
+	position: relative;
+	top: 0px;
+
 }
 
 .essential-data {
-	width: 90%;
-	margin: 0px auto 8px auto;
+	width: 100%;
+	margin: 0px auto 12px auto;
+	background-color: @blue;
+	color: #fff;
+	font-size: 18px;
+	line-height: 18px;
+	font-family: @brand2;
+	
 	& tr {
 		width: 100%;
 	}
 	& td {
 		text-align: center;
-		font-weight: 700;
+		font-weight: 100;
+		padding-bottom: 8px;
+		padding-top: 8px;
+		&:first-child {
+			padding-left:10px;
+		}
+		&:last-child {
+			padding-right: 10px;
+		}
 
+	}
+}
+
+.map {
+	& img {
+	width: 100%;
+	}
+}
+
+.footer {
+	height: 48px;
+}
+
+.commute {
+	margin-left: 10px;
+	display: block;
+	margin-bottom: 2px;
+	& .icon {
+		width: 30px;
+		height: 30px;
+		display: inline-block;
+		float: left;
+		background-repeat:no-repeat;
+		&.bike {
+			background-image:url('../img/icon-bike.png');
+		}
+		&.check {
+			background-image:url('../img/icon-check.png');
+			background-position: 5px 0px;
+		}
+	}
+	& .time {
+		display: inline-block;
+		padding-top: 2px;
+		float: left;
+		margin-left: 4px;
+		font-size: 14px;
+		line-height: 14px;
+		text-transform: uppercase;
+		font-weight: 300;
+		color: #333;
+	}
+}
+
+.scores {
+	margin: 0px 10px 0px 10px;
+	& table {
+		width: 100%;
 	}
 }
