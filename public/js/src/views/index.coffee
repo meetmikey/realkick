@@ -138,21 +138,33 @@ template = """
 				</tr>
 			</table>
 		</div>
-		<div class="public-remarks">
-			{{publicRemarks}}
-		</div>
-		<h1> Your Spots Nearby </h1>
-		<div>
-			{{#each augmentedData.yelp}}
-				<div class="yelp">
-					<b> {{term}} </b>
-					{{#each data.businesses}}
-						<img src={{image_url}} />
-						<a href="{{mobile_url}}"> {{name}} </a>
-						rating: {{rating}}
-					{{/each}}
-				</div>
-			{{/each}}
+		<div class="public-remarks" style="padding-bottom: 60px;">
+			<!-- {{publicRemarks}} -->
+		
+			<div class="inline-header">Neighborhood intelligence</div>
+			<div>
+				{{#each augmentedData.yelp}}
+					<div class="yelp">
+						<div class="interest"> {{term}} </div>
+						{{#each data.businesses}}
+						<div class="interest-item clearfix">
+							<div class="interest-image">
+								<img src={{image_url}} />
+							</div>
+							<div class="interest-text">
+								<div class="clearfix">
+									<div class="interest-name"><a href="{{mobile_url}}"> {{name}} </a></div>
+									<div class="interest-rating">{{rating}}</div>
+								</div>
+								<div class="excerpt">
+									"{{snippet_text}}"
+								</div>
+							</div>
+						</div>
+						{{/each}}
+					</div>
+				{{/each}}
+			</div>
 		</div>
 	</div>
 	
@@ -218,7 +230,7 @@ template = """
 			</tr>
 		</table>
 	</div>
-  </div>
+ </div>
 </div>
 <script>
 $('#listing-carousel').carousel({

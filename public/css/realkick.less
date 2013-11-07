@@ -40,6 +40,8 @@ body {
 	position: relative;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	padding-bottom: 60px;
+
 	& -webkit-scrollbar { 
     display: none; 
 	}
@@ -295,6 +297,74 @@ img.ios-header {
 	background-color: @blue;
 	color: #fff;
 	height: 50px;
+}
+
+/*-------------- YELP ------------------- */
+
+.inline-header {
+	font-size: 20px;
+	font-weight: 100;
+	margin: 20px 0px 10px 0px;
+	font-family: @brand2;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #ccc;
+	text-transform: capitalize;
+
+
+}
+
+.interest {
+	font-weight: 900;
+	text-transform: uppercase;
+	margin: 12px 0px 8px 0px;
+	font-size: 12px;
+}
+
+.interest-item {
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: #f0f0f0 1px solid;
+	&:last-child {
+		border-bottom: none;
+	}
+
+}
+
+.interest-image {
+	display: inline-block;
+	width: 50px;
+	margin-right: 10px;
+	float: left;
+	padding-top: 6px;
+	& img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.interest-text {
+	display: inline-block;
+	width: 224px;
+	float: left;
+
+}
+
+.interest-name {
+	display: inline-block;
+	float: left;
+}
+
+.interest-rating {
+	display: inline-block;
+	float: right;
+	font-size: 12px;
+	
+}
+
+.excerpt {
+	font-size: 12px;
+	display: block;
+	color: #777;
 }
 
 /* ------------ DIALOGUE BOX ------------------- */
