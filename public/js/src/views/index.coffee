@@ -88,7 +88,7 @@ template = """
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			Fireplace
+	  			Swimming Pool
 	  		</div>
 	  	</div>
 	 	<div class="scores">
