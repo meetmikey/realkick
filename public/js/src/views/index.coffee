@@ -173,13 +173,13 @@ template = """
 			<div class="reason-button">
 				price
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				neighborhood
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				floorplan
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				other
 			</div>
 		</div>
@@ -187,10 +187,10 @@ template = """
 
 	<div class="maybe super-box" id="maybeBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				save for later
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				ask brian
 			</div>
 		</div>
@@ -198,10 +198,10 @@ template = """
 
 	<div class="yes super-box" id="yesBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				call brian
 			</div>
-			<div class="reason-button">
+			<div class="reason-button goToStaticA">
 				book a viewing
 			</div>
 		</div>
@@ -250,7 +250,8 @@ class RealKick.View.Index extends RealKick.View.Base
     'click #noButton': 'showNo'
     'click #maybeButton': 'showMaybe'
     'click #yesButton': 'showYes'
-    'click .reason-button': 'nextListing'
+    'click .goToNextListing': 'goToNextListing'
+    'click .goToStaticA': 'goToStaticB'
 
   showNo: =>
     $('#noBox').css 'visibility', 'visible'
@@ -261,11 +262,14 @@ class RealKick.View.Index extends RealKick.View.Base
   showYes: =>
     $('#yesBox').css 'visibility', 'visible'
 
-  nextListing: =>
+  goToNextListing: =>
     @listingId++
     if @listingId > 4
       @listingId = 1
     @fetchListing()
+
+  goToStaticB: =>
+    RealKick.Router.router.navigate 'b', {trigger:true}
 
   fetchListing: =>
     @listing = new RealKick.Model.Listing
