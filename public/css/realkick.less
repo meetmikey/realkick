@@ -27,6 +27,7 @@ body {
 	left: 40%;
 	padding-left: -210px;
 	top: 3%;
+	overflow: hidden;
 	}
 
 .fake-screen {
@@ -145,6 +146,7 @@ img.ios-header {
 	position: fixed;
 	top: 598px;
 	background-color: #fff;
+	z-index: 9;
 	
 	width: 316px;
 	& table {
@@ -201,9 +203,6 @@ img.ios-header {
 		display: inline-block;
 		float: left;
 		background-repeat:no-repeat;
-		&.bicycling {
-			background-image:url('../img/icon-bike.png');
-		}
 		&.check {
 			background-image:url('../img/icon-check.png');
 			background-position: 5px 0px;
@@ -211,11 +210,11 @@ img.ios-header {
 		&.driving {
 			background-image:url('../img/icon-car.png');
 		}
-		&.driving {
-			background-image:url('../img/icon-car.png');
-		}
 		&.transit {
 			background-image:url('../img/icon-bus.png');
+		}
+		&.bicycling {
+			background-image:url('../img/icon-bike.png');
 		}
 	}
 	& .time {
@@ -303,20 +302,57 @@ img.ios-header {
 .super-box {
 	position: fixed;
 	z-index: 10;
-	background-color: #000;
-	opacity: 0.6;
+	opacity: 1;
 	width:316px;
-	height:559px;
+	height: 560px;
 	display: block;
-	top: 89px;
+	top: 140px;
+	visibility: hidden;
+	&.no {
+		background-color: @red;
+		& .reason-button:hover, .reason-button:active {
+			border: 2px solid darken(@red,10%);
+			background-color: darken(@red,10%);
+		} 
+	}
+	&.yes {
+		background-color: @green;
+		& .reason-button:hover, .reason-button:active {
+			border: 2px solid darken(@green,10%);
+			background-color: darken(@green,10%);
+		} 
+	}
+	&.maybe {
+		background-color: @orange;
+		& .reason-button:hover, .reason-button:active {
+			border: 2px solid darken(@orange,10%);
+			background-color: darken(@orange,10%);
+		} 
+	}
 }
 
 .main-box {
 	width: 276px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #fff;
 	padding: 20px;
 	opacity: 1;
 	margin-top: 120px;
+	
+	color: #fff;
+	font-size: 24px;
+}
+
+.reason-button {
+	border: 2px solid #fff;
+	width: 100%;
+	text-align: center;
+	padding: 8px;
+	margin-bottom: 14px;
+	font-weight: 300;
+	&:hover {
+		cursor: pointer;
+		border: 2px  #fff;
+	}
+
 }

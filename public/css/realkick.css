@@ -15,6 +15,7 @@ body {
   left: 40%;
   padding-left: -210px;
   top: 3%;
+  overflow: hidden;
 }
 .fake-screen {
   background-color: #fff;
@@ -107,6 +108,7 @@ img.ios-header {
   position: fixed;
   top: 598px;
   background-color: #fff;
+  z-index: 9;
   width: 316px;
 }
 .footer table {
@@ -162,9 +164,6 @@ img.ios-header {
   float: left;
   background-repeat: no-repeat;
 }
-.commute .icon.bicycling {
-  background-image: url('../img/icon-bike.png');
-}
 .commute .icon.check {
   background-image: url('../img/icon-check.png');
   background-position: 5px 0px;
@@ -172,11 +171,11 @@ img.ios-header {
 .commute .icon.driving {
   background-image: url('../img/icon-car.png');
 }
-.commute .icon.driving {
-  background-image: url('../img/icon-car.png');
-}
 .commute .icon.transit {
   background-image: url('../img/icon-bus.png');
+}
+.commute .icon.bicycling {
+  background-image: url('../img/icon-bike.png');
 }
 .commute .time {
   display: inline-block;
@@ -252,19 +251,56 @@ img.ios-header {
 .super-box {
   position: fixed;
   z-index: 10;
-  background-color: #000;
-  opacity: 0.6;
+  opacity: 1;
   width: 316px;
-  height: 559px;
+  height: 560px;
   display: block;
-  top: 89px;
+  top: 140px;
+  visibility: hidden;
+}
+.super-box.no {
+  background-color: #f46c62;
+}
+.super-box.no .reason-button:hover,
+.super-box.no .reason-button:active {
+  border: 2px solid #f13f32;
+  background-color: #f13f32;
+}
+.super-box.yes {
+  background-color: #52cc7e;
+}
+.super-box.yes .reason-button:hover,
+.super-box.yes .reason-button:active {
+  border: 2px solid #36b564;
+  background-color: #36b564;
+}
+.super-box.maybe {
+  background-color: #f48e69;
+}
+.super-box.maybe .reason-button:hover,
+.super-box.maybe .reason-button:active {
+  border: 2px solid #f16a39;
+  background-color: #f16a39;
 }
 .main-box {
   width: 276px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
   padding: 20px;
   opacity: 1;
   margin-top: 120px;
+  color: #fff;
+  font-size: 24px;
+}
+.reason-button {
+  border: 2px solid #fff;
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 14px;
+  font-weight: 300;
+}
+.reason-button:hover {
+  cursor: pointer;
+  border: 2px  #fff;
 }

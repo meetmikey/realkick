@@ -3,81 +3,81 @@ template = """
 <div class="fake-phone">
   <div class="fake-screen">
 
-  	<div class="header clearfix">
-		<div class="ios-header clearfix"><img src="img/ios-top.png" style="width:316px;"></div>
-				<div class="header-nav clearfix">
-					<div class="header-button pull-left">
-						<div class="glyphicon glyphicon-align-justify"></div>
-					</div>
-					<div class="text">
-							{{internetListing}}
-					</div>
-					<div class="header-button pull-right">
-						<div style="font-size: 20px; line-height: 20px;" class="glyphicon glyphicon-cog"></div>
-					</div>
-				</div>
-	 		</div>
-  	<div class="container">
+          <div class="header clearfix">
+                <div class="ios-header clearfix"><img src="img/ios-top.png" style="width:316px;"></div>
+                                <div class="header-nav clearfix">
+                                        <div class="header-button pull-left">
+                                                <div class="glyphicon glyphicon-align-justify"></div>
+                                        </div>
+                                        <div class="text">
+                                                        {{internetListing}}
+                                        </div>
+                                        <div class="header-button pull-right">
+                                                <div style="font-size: 20px; line-height: 20px;" class="glyphicon glyphicon-cog"></div>
+                                        </div>
+                                </div>
+                         </div>
+          <div class="container">
 
-	  	
-	  	<div id="listing-carousel" class="carousel slide">
-	  	
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner">
-		    <div class="item active">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_101_81.jpg">
-		    </div>
-		    <div class="item">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_A01_81.jpg">
-		    </div>
-		    <div class="item">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_B01_81.jpg">
-		    </div>
-		    <div class="item">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_C01_81.jpg">
-		    </div>
-		    <div class="item">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_D01_81.jpg">
-		    </div>
-		    <div class="item">
-		      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_G01_81.jpg">
-		    </div>
-		  </div>
+                  
+                  <div id="listing-carousel" class="carousel slide">
+                  
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_101_81.jpg">
+                    </div>
+                    <div class="item">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_A01_81.jpg">
+                    </div>
+                    <div class="item">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_B01_81.jpg">
+                    </div>
+                    <div class="item">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_C01_81.jpg">
+                    </div>
+                    <div class="item">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_D01_81.jpg">
+                    </div>
+                    <div class="item">
+                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_G01_81.jpg">
+                    </div>
+                  </div>
 
-		  <!-- Controls -->
-		  <a class="left carousel-control" href="#listing-carousel" data-slide="prev">
-		     <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
-		  </a>
-		  <a class="right carousel-control" href="#listing-carousel" data-slide="next">
-		    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
-		  </a>
-		</div>
-		<table class="essential-data">
-	  		<tr>
-	  			<td>
-	  				${{listingPrice}}
-	  			</td>
-	  			<td>
-	  				{{numBedrooms}} <small>BD</small>
-	  			</td>
-	  			<td>
-	  				{{numBathrooms}} <small>BA</small>
-	  			</td>
-	  			<td>
-	  				{{squareFeet}} <small>SQFT</small> 
-	  			</td>
-	  		</tr>
-	  	</table>
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#listing-carousel" data-slide="prev">
+                     <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
+                  </a>
+                  <a class="right carousel-control" href="#listing-carousel" data-slide="next">
+                    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+                  </a>
+                </div>
+                <table class="essential-data">
+                          <tr>
+                                  <td>
+                                          ${{listingPrice}}
+                                  </td>
+                                  <td>
+                                          {{numBedrooms}} <small>BD</small>
+                                  </td>
+                                  <td>
+                                          {{numBathrooms}} <small>BA</small>
+                                  </td>
+                                  <td>
+                                          {{squareFeet}} <small>SQFT</small> 
+                                  </td>
+                          </tr>
+                  </table>
 
-  		{{#each augmentedData.googleMaps}}
-		  	<div class="commute clearfix">
-		  		<div class="icon {{mode}}">
-		  		</div>
-		  		<div class="time">
-		  			{{this.data.duration.text}} to {{this.name}}
-		  		</div>
-	  	</div>
-  		{{/each}}
+                  {{#each augmentedData.googleMaps}}
+                          <div class="commute clearfix">
+                                  <div class="icon {{mode}}">
+                                  </div>
+                                  <div class="time">
+                                          {{this.data.duration.text}} to {{this.name}}
+                                  </div>
+                  </div>
+                  {{/each}}
 
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
@@ -169,6 +169,28 @@ template = """
 			</div>
 			<div class="reason-button">
 				other
+			</div>
+		</div>
+	</div>
+
+	<div class="maybe super-box">
+		<div class="main-box">
+			<div class="reason-button">
+				save for later
+			</div>
+			<div class="reason-button">
+				ask brian
+			</div>
+		</div>
+	</div>
+
+	<div class="yes super-box">
+		<div class="main-box">
+			<div class="reason-button">
+				call brian
+			</div>
+			<div class="reason-button">
+				book a viewing
 			</div>
 		</div>
 	</div>
