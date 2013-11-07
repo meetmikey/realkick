@@ -18,9 +18,10 @@ exports.getCurrentUser = function( req, res ) {
       winston.doError( 'no user', {}, res );
 
     } else {
-      res.send( user);
+      res.send( user );
     }
   });
+}
 
 exports.getListing = function( req, res ) {
   listing = listingJSON;

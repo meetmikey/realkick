@@ -17,3 +17,8 @@ class RealKick.View.MainLayout.Layout extends RealKick.View.Base
 
   preInitialize: =>
     @setElement $('#rkContainer')
+
+  postRender: =>
+    selector = '.fake-screen'
+    #textareaWidth = document.getElementById( selector ).scrollWidth
+    #document.getElementById( selector ).style.width = textareaWidth + "px"
