@@ -1,6 +1,7 @@
 (function() {
 
   window.RealKick = {
+    Constants: {},
     Model: {},
     Collection: {},
     Decorator: {},
