@@ -6,7 +6,8 @@ class RealKick.Router.Main extends Backbone.Router
   initialize: =>
 
   index: =>
-    @render 'Index'
+    @render 'Index',
+      listingId: '1'
 
   listing: (listingId) =>
     @render 'Listing',

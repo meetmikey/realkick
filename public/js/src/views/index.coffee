@@ -5,7 +5,7 @@ template = """
   	<div class="header">
 		<img class="ios-header" src="img/ios-top.png" style="width:316px;">
 		<div class="text">
-			700 West E Street
+			{{address}}
 		</div>
 	 </div>
   	<div class="container">
@@ -148,3 +148,20 @@ $('#listing-carousel').carousel({
 class RealKick.View.Index extends RealKick.View.Base
 
   templateHTML: template
+
+  listing: null
+
+  postInitialize: =>
+    @listing = new RealKick.Model.Listing
+      id: @listingId
+
+  postRender: =>
+    @listing.fetch
+      success: () =>
+        @renderTemplate()
+      error: () =>
+        console.log 'failed to get listing: ', @listing
+
+  getTemplateData: =>
+    data = @listing.decorate()
+    data

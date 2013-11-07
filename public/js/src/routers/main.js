@@ -25,7 +25,9 @@
     Main.prototype.initialize = function() {};
 
     Main.prototype.index = function() {
-      return this.render('Index');
+      return this.render('Index', {
+        listingId: '1'
+      });
     };
 
     Main.prototype.listing = function(listingId) {

@@ -10,7 +10,7 @@
       Listing.__super__.constructor.apply(this, arguments);
     }
 
-    Listing.prototype.url = 'listing';
+    Listing.prototype.urlRoot = 'listing';
 
     Listing.prototype.decorator = RealKick.Decorator.Listing;
 
