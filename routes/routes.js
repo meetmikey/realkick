@@ -33,7 +33,7 @@ var userJSON = {
     }
     , {
         name: "Veronica's work"
-      , mode: 'transit'
+      , mode: 'bicycling'
       , address: '2920 Zoo Dr, San Diego, CA'
     }
     ]
