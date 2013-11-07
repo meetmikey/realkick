@@ -187,15 +187,19 @@ template = """
 
 	<div class="maybe super-box" id="maybeBox">
 		<div class="main-box">
+      <form role="form">
+          <textarea class="form-control" rows="4"></textarea>
+      </form>
 			<div class="reason-button goToNextListing">
-				ask brian a question
+				ask brian
 			</div>
 		</div>
 	</div>
 
   <div class="yes super-box" id="yesBox">
-    <div>Open house Sunday at 2pm</div>
+    
 		<div class="main-box">
+      <div class="interest">Open house Sunday at 2pm</div>
 			<div class="reason-button goToNextListing">
         Add to calendar
 			</div>

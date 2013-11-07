@@ -361,6 +361,24 @@ img.ios-header {
   color: #fff;
   font-size: 24px;
 }
+.main-box .form-control {
+  display: block;
+  width: 100%;
+  height: 140px;
+  padding: 8px;
+  font-size: 18px;
+  line-height: 1.428571429;
+  color: #333;
+  vertical-align: top;
+  background-color: #FFF;
+  border: 2px solid #333;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  margin-bottom: 20px;
+}
 .reason-button {
   border: 2px solid #fff;
   width: 100%;
