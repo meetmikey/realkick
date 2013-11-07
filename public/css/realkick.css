@@ -17,7 +17,7 @@ body {
 .fake-screen {
   background-color: #fff;
   width: 316px;
-  height: 562px;
+  height: 559px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 116px;
@@ -33,6 +33,10 @@ body {
   background-repeat: none;
   filter: none;
 }
+#listing-carousel {
+  max-height: 220px;
+  overflow: hidden;
+}
 #listing-carousel .carousel-inner > .item > img,
 #listing-carousel .carousel-inner > .item > a > img {
   width: 100%;
@@ -43,20 +47,92 @@ body {
   overflow: hidden;
 }
 .header {
+  background-color: #fff;
+  position: fixed;
+  z-index: 15;
+  opacity: 0.8;
+  display: block;
+  border-bottom: 1px solid #000;
   text-align: center;
+  width: 316px;
+}
+.header .text {
+  color: #000;
+  opacity: 1;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 24px;
-  font-weight: 100;
-  text-transform: uppercase;
-  margin-top: 4px;
+  line-height: 24px;
+  padding: 4px 0px 10px 0px;
+  font-weight: 900;
+}
+img.ios-header {
+  width: 316px;
+  position: relative;
+  top: 0px;
 }
 .essential-data {
-  width: 90%;
-  margin: 0px auto 8px auto;
+  width: 100%;
+  margin: 0px auto 12px auto;
+  background-color: #2988cc;
+  color: #fff;
+  font-size: 18px;
+  line-height: 18px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .essential-data tr {
   width: 100%;
 }
 .essential-data td {
   text-align: center;
-  font-weight: 700;
+  font-weight: 100;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+.essential-data td:first-child {
+  padding-left: 10px;
+}
+.essential-data td:last-child {
+  padding-right: 10px;
+}
+.map img {
+  width: 100%;
+}
+.footer {
+  height: 48px;
+}
+.commute {
+  margin-left: 10px;
+  display: block;
+  margin-bottom: 2px;
+}
+.commute .icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  float: left;
+  background-repeat: no-repeat;
+}
+.commute .icon.bike {
+  background-image: url('../img/icon-bike.png');
+}
+.commute .icon.check {
+  background-image: url('../img/icon-check.png');
+  background-position: 5px 0px;
+}
+.commute .time {
+  display: inline-block;
+  padding-top: 2px;
+  float: left;
+  margin-left: 4px;
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #333;
+}
+.scores {
+  margin: 0px 10px 0px 10px;
+}
+.scores table {
+  width: 100%;
 }

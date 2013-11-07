@@ -2,33 +2,23 @@ template = """
 
 <div class="fake-phone">
   <div class="fake-screen">
+  	<div class="header">
+		<img class="ios-header" src="img/ios-top.png" style="width:316px;">
+		<div class="text">
+			700 West E Street
+		</div>
+	 </div>
   	<div class="container">
-	  	<div class="header">
-	  		700 West E Street
-	  	</div>
-	  	<table class="essential-data">
-	  		<tr>
-	  			<td>
-	  				$3,496,000
-	  			</td>
-	  			<td>
-	  				4 BR
-	  			</td>
-	  			<td>
-	  				5 BR
-	  			</td>
-	  			<td>
-	  				590 SQFT 
-	  			</td>
-	  		</tr>
-	  	</table>
+
+	  	
 	  	<div id="listing-carousel" class="carousel slide">
+	  		
 		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
+		  <!-- <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol>
+		  </ol> -->
 
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner">
@@ -60,12 +50,57 @@ template = """
 		    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
 		  </a>
 		</div>
+		<table class="essential-data">
+	  		<tr>
+	  			<td>
+	  				$3,496,000
+	  			</td>
+	  			<td>
+	  				4 <small>BD</small>
+	  			</td>
+	  			<td>
+	  				5 <small>BA</small>
+	  			</td>
+	  			<td>
+	  				590 <small>SQFT</small> 
+	  			</td>
+	  		</tr>
+	  	</table>
+	  	<div class="commute clearfix">
+	  		<div class="icon bike">
+	  		</div>
+	  		<div class="time">
+	  			15 minutes to YourCompany
+	  		</div>
+	  	</div>
+	  	<div class="commute clearfix">
+	  		<div class="icon check">
+	  		</div>
+	  		<div class="time">
+	  			2 car garage
+	  		</div>
+	  	</div>
+	  	<div class="commute clearfix">
+	  		<div class="icon check">
+	  		</div>
+	  		<div class="time">
+	  			Trader Joe's nearby
+	  		</div>
+	  	</div>
+	  	<div class="commute clearfix">
+	  		<div class="icon check">
+	  		</div>
+	  		<div class="time">
+	  			Fire place
+	  		</div>
+	  	</div>
+
 
   </div>
 </div>
 <script>
 $('#listing-carousel').carousel({
-  interval: 2000
+  interval: 3000
 })
 </script>
 """
