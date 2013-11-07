@@ -5,6 +5,7 @@
     build: './build/js'
 
   @coffeescript './public/js/src', output: './public/js/src'
+  @coffeescript './lib', output: './lib'
 
 @stylesheets 'styles', ->
   @options
