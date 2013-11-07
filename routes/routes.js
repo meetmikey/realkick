@@ -11,6 +11,7 @@ exports.getListing = function( req, res ) {
   user = userJSON;
   listingUtils.getAugmentedListingData( listing, user, function(err, augmentedListingData) {
     if ( err ) {
+      console.log('GET LISTING ERROR: ', err )
       winston.handleError( err, res );
 
     } else {

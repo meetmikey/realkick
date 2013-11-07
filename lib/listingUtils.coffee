@@ -7,6 +7,7 @@ GoogleMaps = require './google_maps'
 Yelp = require './yelp'
 CraigslistScraper = require './craigslist_scraper'
 FillTemplate = require './fill_template'
+winston = require('./winstonWrapper').winston
 
 listingUtils = this
 
@@ -18,6 +19,7 @@ exports.getAugmentedListingData = (listing, user, callback) =>
   async.parallel [
     (cb) ->
       #compute commuting time for self
+      console.log 'START'
       async.eachSeries user.commutes,
         (commute, eachCb) ->
           GoogleMaps.getDirections listingUtils.getLatLong(listing), commute.address, commute.mode, (err, gmData) ->          
@@ -25,7 +27,7 @@ exports.getAugmentedListingData = (listing, user, callback) =>
             console.log commute
             console.log gmData
             eachCb null, gmData
-        (err, results) ->
+        , (err, results) ->
           console.log err if err
           console.log 'THE RESULTS', results
           cb null, results
