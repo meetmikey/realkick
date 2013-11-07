@@ -40,5 +40,13 @@ appInitUtils.initApp( 'realkick', initActions, conf, function() {
     res.sendfile('public/index.html');
   });
 
+
+
+
+  app.get('/listing', function(req, res) {
+    routes.getListing(req, res);
+  });
+
+
   app.listen(conf.listenPort);
 });

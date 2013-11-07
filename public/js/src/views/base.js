@@ -9,7 +9,7 @@
 
     function Base() {
       this._getTemplatePathFromName = __bind(this._getTemplatePathFromName, this);
-      this._renderTemplate = __bind(this._renderTemplate, this);
+      this.renderTemplate = __bind(this.renderTemplate, this);
       this._assignSubviewElement = __bind(this._assignSubviewElement, this);
       this._renderSubView = __bind(this._renderSubView, this);
       this._teardown = __bind(this._teardown, this);
@@ -33,6 +33,7 @@
       this.renderSubView = __bind(this.renderSubView, this);
       this.renderSubViews = __bind(this.renderSubViews, this);
       this.addSubView = __bind(this.addSubView, this);
+      this.renderTemplate = __bind(this.renderTemplate, this);
       this.render = __bind(this.render, this);
       this.setSelector = __bind(this.setSelector, this);
       this.getSelector = __bind(this.getSelector, this);
@@ -87,10 +88,14 @@
 
     Base.prototype.render = function() {
       this.preRender();
-      this._renderTemplate();
+      this.renderTemplate();
       this.renderSubViews();
       this.postRender();
       return this;
+    };
+
+    Base.prototype.renderTemplate = function() {
+      return this.$el.html(this.getRenderedTemplate());
     };
 
     Base.prototype.addSubView = function(name, subViewDefinition, subViewData) {
@@ -260,7 +265,7 @@
       return subView.setElement(element);
     };
 
-    Base.prototype._renderTemplate = function() {
+    Base.prototype.renderTemplate = function() {
       return this.$el.html(this.getRenderedTemplate());
     };
 

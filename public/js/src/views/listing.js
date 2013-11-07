@@ -1,0 +1,52 @@
+(function() {
+  var template,
+    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  template = "<div>listing!</div>\n{{#each photos}}\n  <img src='{{Location}}' />\n{{/each}}";
+
+  RealKick.View.Listing = (function(_super) {
+
+    __extends(Listing, _super);
+
+    function Listing() {
+      this.getTemplateData = __bind(this.getTemplateData, this);
+      this.postRender = __bind(this.postRender, this);
+      this.postInitialize = __bind(this.postInitialize, this);
+      Listing.__super__.constructor.apply(this, arguments);
+    }
+
+    Listing.prototype.templateHTML = template;
+
+    Listing.prototype.listing = null;
+
+    Listing.prototype.postInitialize = function() {
+      return this.listing = new RealKick.Model.Listing({
+        id: this.listingId
+      });
+    };
+
+    Listing.prototype.postRender = function() {
+      var _this = this;
+      return this.listing.fetch({
+        success: function() {
+          return _this.renderTemplate();
+        },
+        error: function() {
+          return console.log('failed to get listing: ', _this.listing);
+        }
+      });
+    };
+
+    Listing.prototype.getTemplateData = function() {
+      var data;
+      data = this.listing.decorate();
+      return data;
+    };
+
+    return Listing;
+
+  })(RealKick.View.Base);
+
+}).call(this);

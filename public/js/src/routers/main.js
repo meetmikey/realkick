@@ -11,19 +11,27 @@
       this.render = __bind(this.render, this);
       this.scrollToTop = __bind(this.scrollToTop, this);
       this.renderLayout = __bind(this.renderLayout, this);
+      this.listing = __bind(this.listing, this);
       this.index = __bind(this.index, this);
       this.initialize = __bind(this.initialize, this);
       Main.__super__.constructor.apply(this, arguments);
     }
 
     Main.prototype.routes = {
-      '': 'index'
+      '': 'index',
+      'listing/:listingId': 'listing'
     };
 
     Main.prototype.initialize = function() {};
 
     Main.prototype.index = function() {
       return this.render('Index');
+    };
+
+    Main.prototype.listing = function(listingId) {
+      return this.render('Listing', {
+        listingId: listingId
+      });
     };
 
     Main.prototype.renderLayout = function() {

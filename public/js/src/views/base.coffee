@@ -45,10 +45,13 @@ class RealKick.View.Base extends Backbone.View
 
   render: =>
     @preRender()
-    @_renderTemplate()
+    @renderTemplate()
     @renderSubViews()
     @postRender()
     this
+
+  renderTemplate: =>
+    @$el.html @getRenderedTemplate()
 
   addSubView: (name, subViewDefinition, subViewData) =>
     fullViewClassName = 'RealKick.View.' + subViewDefinition.viewClassName
@@ -179,7 +182,7 @@ class RealKick.View.Base extends Backbone.View
       element = @$ selector
     subView.setElement element
 
-  _renderTemplate: =>
+  renderTemplate: =>
     @$el.html @getRenderedTemplate()
 
   _getTemplatePathFromName: (templateName) =>
