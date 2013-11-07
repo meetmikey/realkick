@@ -9,7 +9,7 @@ var express = require('express'),
     winston = require ('./lib/winstonWrapper').winston;
 
 var initActions = [
-  //appInitUtils.CONNECT_MONGO
+  appInitUtils.CONNECT_MONGO
 ];
 
 //initApp() will not callback an error.

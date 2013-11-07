@@ -26,6 +26,7 @@ class RealKick.View.Listing extends RealKick.View.Base
 
   postRender: =>
     @listing.fetch
+      
       success: () =>
         @renderTemplate()
       error: () =>

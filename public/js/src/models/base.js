@@ -8,6 +8,7 @@
     __extends(Base, _super);
 
     function Base() {
+      this.fetch = __bind(this.fetch, this);
       this.decorate = __bind(this.decorate, this);
       Base.__super__.constructor.apply(this, arguments);
     }
@@ -18,6 +19,8 @@
       }
       return {};
     };
+
+    Base.prototype.fetch = function() {};
 
     return Base;
 
