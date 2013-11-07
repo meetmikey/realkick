@@ -4,6 +4,7 @@
 
 body {
   background-color: #fff;
+  font-weight: 300;
 }
 
 .container {
@@ -90,11 +91,11 @@ img.ios-header {
 
 .essential-data {
 	width: 100%;
-	margin: 0px auto 12px auto;
+	margin: 0px auto 14px auto;
 	background-color: @blue;
 	color: #fff;
-	font-size: 18px;
-	line-height: 18px;
+	font-size: 20px;
+	line-height: 20px;
 	font-family: @brand2;
 	
 	& tr {
@@ -131,7 +132,7 @@ img.ios-header {
 	margin-bottom: 2px;
 	& .icon {
 		width: 30px;
-		height: 30px;
+		height: 24px;
 		display: inline-block;
 		float: left;
 		background-repeat:no-repeat;
@@ -145,12 +146,11 @@ img.ios-header {
 	}
 	& .time {
 		display: inline-block;
-		padding-top: 2px;
+		padding-top: 1px;
 		float: left;
 		margin-left: 4px;
 		font-size: 14px;
 		line-height: 14px;
-		text-transform: uppercase;
 		font-weight: 300;
 		color: #333;
 	}
@@ -160,5 +160,13 @@ img.ios-header {
 	margin: 0px 10px 0px 10px;
 	& table {
 		width: 100%;
+		text-align: center;
 	}
+	& .label {
+		color: #000;
+	}
+}
+
+.public-remarks {
+	padding: 10px 14px 10px 14px;
 }

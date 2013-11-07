@@ -1,5 +1,5 @@
 class RealKick.Model.Listing extends RealKick.Model.Base
 
-  url: 'listing'
+  urlRoot: 'listing'
 
   decorator: RealKick.Decorator.Listing
