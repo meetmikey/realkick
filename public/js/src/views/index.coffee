@@ -168,7 +168,7 @@ template = """
 		</div>
 	</div>
 	
-	<div class="no super-box">
+	<div class="no super-box" id="noBox">
 		<div class="main-box">
 			<div class="reason-button">
 				price
@@ -185,7 +185,7 @@ template = """
 		</div>
 	</div>
 
-	<div class="maybe super-box">
+	<div class="maybe super-box" id="maybeBox">
 		<div class="main-box">
 			<div class="reason-button">
 				save for later
@@ -196,7 +196,7 @@ template = """
 		</div>
 	</div>
 
-	<div class="yes super-box">
+	<div class="yes super-box" id="yesBox">
 		<div class="main-box">
 			<div class="reason-button">
 				call brian
@@ -208,23 +208,25 @@ template = """
 	</div>
 
 	<div class="footer">
-		<div class="agent-comment">
-			<div class="agent">
-				<img src="img/agent.png">
-			</div>
-			<div class="comment">
-				Up and coming neighborhood. Great nightlife. Nice touches - Bamboo floors!!!
-			</div>
-		</div>
+    {{#each comments}}
+  		<div class="agent-comment">
+  			<div class="agent">
+  				<img src="{{userImageURL}}">
+  			</div>
+  			<div class="comment">
+  				{{text}}
+  			</div>
+  		</div>
+    {{/each}}
 		<table>
 			<tr>
-				<td class="no">
+				<td class="no" id="noButton">
 					<div class="glyphicon glyphicon-remove"></div>
 				</td>
-				<td class="maybe">
+				<td class="maybe" id="maybeButton">
 					<div style="font-size:36px; line-height:36px; padding-top: 2px;">?</div>
 				</td>
-				<td class="yes">
+				<td class="yes" id="yesButton">
 					<div class="glyphicon glyphicon-ok"></div>
 				</td>
 			</tr>
@@ -244,18 +246,44 @@ class RealKick.View.Index extends RealKick.View.Base
   templateHTML: template
 
   listing: null
+  events:
+    'click #noButton': 'showNo'
+    'click #maybeButton': 'showMaybe'
+    'click #yesButton': 'showYes'
+    'click .reason-button': 'nextListing'
 
-  postInitialize: =>
+  showNo: =>
+    $('#noBox').css 'visibility', 'visible'
+
+  showMaybe: =>
+    $('#maybeBox').css 'visibility', 'visible'
+
+  showYes: =>
+    $('#yesBox').css 'visibility', 'visible'
+
+  nextListing: =>
+    @listingId++
+    if @listingId > 4
+      @listingId = 1
+    @fetchListing()
+
+  fetchListing: =>
     @listing = new RealKick.Model.Listing
       id: @listingId
-
-  postRender: =>
+    @commentsCollection = new RealKick.Collection.Comment
     @listing.fetch
       success: () =>
+        @commentsCollection.reset @listing.get('comments')
         @renderTemplate()
       error: () =>
         console.log 'failed to get listing: ', @listing
 
+  postRender: =>
+    @fetchListing()
+
   getTemplateData: =>
-    data = @listing.decorate()
+    data = {}
+    if @listing
+      data = @listing.decorate()
+      data.comments = _.invoke( @commentsCollection.models, 'decorate' )
     data

@@ -28,6 +28,7 @@
     }
 
     Main.prototype.routes = {
+      'home': 'index',
       '': 'index',
       'listing/:listingId': 'listing',
       'a': 'staticA',
