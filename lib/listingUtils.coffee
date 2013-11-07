@@ -44,10 +44,8 @@ exports.getAugmentedListingData = (listing, user, callback) =>
             listingUtils.getLatLong(listing),
             (err, data) ->
               eachCb(err) if err
-              console.log 'YELP DATA', data
               eachCb null, {term : term, data: data}
         (err, results)->
-          console.log 'RESULTS', results
           console.log err if err
           cb null, results
   ],
