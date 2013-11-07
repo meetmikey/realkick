@@ -22,21 +22,15 @@ exports.getAugmentedListingData = (listing, user, callback) =>
         (commute, eachCb) ->
           GoogleMaps.getDirections listingUtils.getLatLong(listing), commute.address, commute.mode, (err, gmData) ->          
             console.log err if err
-            console.log commute
-            console.log gmData
             eachCb null, gmData
         (err, results) ->
           console.log err if err
-          console.log 'THE RESULTS', results
           cb null, results
     (cb) ->
       #compute walkscore
-      ###
       WalkScore.getWalkScore listing.Address, listing.Coordinates.Latitude, listing.Coordinates.Longitude, (err, wsData) ->
         console.log err if err
         cb null, wsData
-      ###
-      cb null
     (cb) ->
       #get transit data
       WalkScore.getTransitScore listing.County, listing.State, listing.Coordinates.Latitude, listing.Coordinates.Longitude, (err, wsData) ->
@@ -44,7 +38,6 @@ exports.getAugmentedListingData = (listing, user, callback) =>
         cb null, wsData
     (cb) ->
       #get yelp data for each search term
-      ###
       async.eachSeries user.yelpTerms,
         (term, eachCb) ->
           Yelp.search term,
@@ -57,8 +50,6 @@ exports.getAugmentedListingData = (listing, user, callback) =>
           console.log results
           console.log err if err
           cb null, results
-      ###
-      cb null, ''
   ],
   (err, results) ->
     apiData =
