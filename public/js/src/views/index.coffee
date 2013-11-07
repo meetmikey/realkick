@@ -68,20 +68,27 @@ template = """
                   </div>
                   {{/each}}
 
-	  	<div class="commute clearfix">
-	  		<div class="icon check">
-	  		</div>
-	  		<div class="time">
-	  			Garage Parking
-	  		</div>
-	  	</div>
-	  	<div class="commute clearfix">
-	  		<div class="icon check">
-	  		</div>
-	  		<div class="time">
-	  			Balcony
-	  		</div>
-	  	</div>
+      {{#if hasGarageParking}}
+  	  	<div class="commute clearfix">
+  	  		<div class="icon check">
+  	  		</div>
+  	  		<div class="time">
+  	  			Garage Parking
+  	  		</div>
+  	  	</div>
+      {{/if}}
+      
+      {{#if hasFireplace}}
+      <div class="commute clearfix">
+        <div class="icon check">
+        </div>
+        <div class="time">
+          Fireplace
+        </div>
+      </div>
+      {{/if}}
+
+      {{#if hasPool}}
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
@@ -89,6 +96,7 @@ template = """
 	  			Swimming Pool
 	  		</div>
 	  	</div>
+      {{/if}}
 	 	<div class="scores">
 			<table>
 				<tr>
