@@ -132,6 +132,19 @@ template = """
 		<div class="public-remarks">
 			{{publicRemarks}}
 		</div>
+		<h1> Your Spots Nearby </h1>
+		<div>
+			{{#each augmentedData.yelp}}
+				<div class="yelp">
+					<b> {{term}} </b>
+					{{#each data.businesses}}
+						<img src={{image_url}} />
+						<a href="{{mobile_url}}"> {{name}} </a>
+						rating: {{rating}}
+					{{/each}}
+				</div>
+			{{/each}}
+		</div>
 	</div>
   </div>
 </div>
