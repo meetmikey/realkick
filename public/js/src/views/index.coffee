@@ -12,14 +12,7 @@ template = """
 
 	  	
 	  	<div id="listing-carousel" class="carousel slide">
-	  		
-		  <!-- Indicators -->
-		  <!-- <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol> -->
-
+	  	
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner">
 		    <div class="item active">
@@ -81,14 +74,14 @@ template = """
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			garage parking
+	  			Garage Parking
 	  		</div>
 	  	</div>
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			Trader Joe's nearby
+	  			Balcony
 	  		</div>
 	  	</div>
 	  	<div class="commute clearfix">
@@ -119,7 +112,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							{{augmentedData.transitScore.transit_score}}
+							85
 						</div>
 						<div class="label">
 							transit
