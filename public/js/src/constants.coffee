@@ -1,2 +1,2 @@
 _.extend RealKick.Constants,
-  some: 'thing'
+  defaultUserShortId: 1

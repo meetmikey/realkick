@@ -1,7 +1,7 @@
 (function() {
 
   _.extend(RealKick.Constants, {
-    some: 'thing'
+    defaultUserShortId: 1
   });
 
 }).call(this);

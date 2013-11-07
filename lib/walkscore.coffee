@@ -17,11 +17,8 @@ WalkScore.getWalkScore = (address, latitude, longitude, cb) ->
 
   request WalkScore.constructURL(apiURL, params), (err, res, body)->
     if !err && res.statusCode == 200
-      try
-        jsonData = JSON.parse(body)
-        cb null, jsonData
-      catch e
-        cb e
+      jsonData = JSON.parse(body)
+      cb null, jsonData
     else
       console.error 'invalid resposne from walkscore', {err : err, code : res?.statusCode}
       cb {err : err, code : res?.statusCode}

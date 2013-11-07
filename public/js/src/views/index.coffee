@@ -2,6 +2,7 @@ template = """
 
 <div class="fake-phone">
   <div class="fake-screen">
+
   	<div class="header clearfix">
 		<div class="ios-header clearfix"><img src="img/ios-top.png" style="width:316px;"></div>
 				<div class="header-nav clearfix">
@@ -9,25 +10,18 @@ template = """
 						<div class="glyphicon glyphicon-align-justify"></div>
 					</div>
 					<div class="text">
-							{{address}} Testing
+							{{internetListing}}
 					</div>
 					<div class="header-button pull-right">
 						<div style="font-size: 20px; line-height: 20px;" class="glyphicon glyphicon-cog"></div>
 					</div>
 				</div>
-	 </div>
+	 		</div>
   	<div class="container">
 
 	  	
 	  	<div id="listing-carousel" class="carousel slide">
-	  		
-		  <!-- Indicators -->
-		  <!-- <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol> -->
-
+	  	
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner">
 		    <div class="item active">
@@ -61,45 +55,49 @@ template = """
 		<table class="essential-data">
 	  		<tr>
 	  			<td>
-	  				$3,496,000
+	  				${{listingPrice}}
 	  			</td>
 	  			<td>
-	  				4 <small>BD</small>
+	  				{{numBedrooms}} <small>BD</small>
 	  			</td>
 	  			<td>
-	  				5 <small>BA</small>
+	  				{{numBathrooms}} <small>BA</small>
 	  			</td>
 	  			<td>
-	  				590 <small>SQFT</small> 
+	  				{{squareFeet}} <small>SQFT</small> 
 	  			</td>
 	  		</tr>
 	  	</table>
+
+  		{{#each augmentedData.googleMaps}}
+		  	<div class="commute clearfix">
+		  		<div class="icon {{mode}}">
+		  		</div>
+		  		<div class="time">
+		  			{{this.data.duration.text}} to {{this.name}}
+		  		</div>
+	  	</div>
+  		{{/each}}
+
 	  	<div class="commute clearfix">
-	  		<div class="icon bike">
+	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			15 minutes to YourCompany
+	  			Garage Parking
 	  		</div>
 	  	</div>
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			2 car garage
+	  			Balcony
 	  		</div>
 	  	</div>
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>
 	  		<div class="time">
-	  			Trader Joe's nearby
-	  		</div>
-	  	</div>
-	  	<div class="commute clearfix">
-	  		<div class="icon check">
-	  		</div>
-	  		<div class="time">
-	  			Fireplace
+	  			Swimming Pool
 	  		</div>
 	  	</div>
 	 	<div class="scores">
@@ -107,7 +105,7 @@ template = """
 				<tr>
 					<td>
 						<div class="score">
-							87
+							{{augmentedData.walkScore.walkscore}}
 						</div>
 						<div class="label">
 							walking
@@ -123,7 +121,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							88
+							85
 						</div>
 						<div class="label">
 							transit
@@ -131,7 +129,7 @@ template = """
 					</td>
 					<td>
 						<div class="score">
-							68
+							40
 						</div>
 						<div class="label">
 							schools
@@ -141,7 +139,20 @@ template = """
 			</table>
 		</div>
 		<div class="public-remarks">
-			"Live in the exclusive, exquisite Electra. Open and spacious unit located on the 16th floor with panoramic views of the city. Bamboo flooring, travertine throughout both baths, private balcony with incredible views. Open Kitchen with granite counters, Bosh and Thermador appliances.  Featured amenities include: sauna, steam room, fitness center, outdoor seating, pool, spa, BBQ area and concierge services."
+			{{publicRemarks}}
+		</div>
+		<h1> Your Spots Nearby </h1>
+		<div>
+			{{#each augmentedData.yelp}}
+				<div class="yelp">
+					<b> {{term}} </b>
+					{{#each data.businesses}}
+						<img src={{image_url}} />
+						<a href="{{mobile_url}}"> {{name}} </a>
+						rating: {{rating}}
+					{{/each}}
+				</div>
+			{{/each}}
 		</div>
 	</div>
 	<div class="footer">

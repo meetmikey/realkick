@@ -5,5 +5,8 @@ class RealKick.Model.Base extends Backbone.Model
       return @decorator.decorate this
     return {}
 
-  fetch: =>
-    
+  fetch: (options) =>
+    options = options || {}
+    options.data = options.data || {}
+    options.data.userShortId = RealKick.globalUser.get 'shortId'
+    super options
