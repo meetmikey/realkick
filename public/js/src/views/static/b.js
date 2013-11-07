@@ -3,7 +3,7 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  template = "B\n<a href='#a'>A</a>";
+  template = "<a href=\"#b\">\n	<div class=\"fake-phone\">\n	  <div class=\"fake-screen disable\">\n		<img style=\"width:100%;\" src=\"img/agent-alert.png\"       \n	 </div>\n	</div>\n</a>\n";
 
   RealKick.View.Static.B = (function(_super) {
 

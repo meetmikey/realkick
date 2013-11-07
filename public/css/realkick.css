@@ -1,3 +1,7 @@
+img {
+  width: 100%;
+  height: auto;
+}
 body {
   background-color: #fff;
   font-weight: 300;
@@ -31,6 +35,9 @@ body {
 }
 .fake-screen -webkit-scrollbar {
   display: none;
+}
+.fake-screen.disable {
+  overflow: hidden;
 }
 .top-bar {
   height: 26px;
@@ -206,6 +213,10 @@ img.ios-header {
   font-family: 'Open Sans Condensed', sans-serif;
   line-height: 36px;
 }
+.profile-box .score {
+  font-size: 28px;
+  line-height: 28px;
+}
 .score-label {
   margin-top: 4px;
   font-size: 10px;
@@ -358,4 +369,164 @@ img.ios-header {
 .reason-button:hover {
   cursor: pointer;
   border: 2px  #fff;
+}
+/* -------------- AGENT INVENTORY ------------------ */
+.client {
+  padding: 8px 14px 8px 14px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
+}
+.client .glyphicon {
+  font-size: 16px;
+  color: #aaa;
+}
+.client.add .glyphicon {
+  color: #fff;
+  opacity: 0.5;
+}
+.client .new .glyphicon-ok {
+  color: #52cc7e;
+}
+.client .new .glyphicon-remove {
+  color: #f46c62;
+}
+.client .new .glyphicon-remove {
+  color: #f46c62;
+}
+.client .new .glyphicon.question {
+  color: #f48e69;
+}
+.client .new .glyphicon-home {
+  color: #2988cc;
+}
+.client .new .glyphicon {
+  font-size: 18px;
+}
+.client.inactive {
+  background-color: #e5e5e5;
+  opacity: 0.8;
+  border-bottom: 1px solid #999;
+}
+.client.add {
+  background-color: #52cc7e;
+}
+.client-profile {
+  border-radius: 500px;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  float: left;
+}
+.add .client-profile {
+  background-color: #fff;
+}
+.profile-box .client-profile {
+  width: 60px;
+  height: 60px;
+}
+.client-info {
+  float: left;
+  display: inline-block;
+  margin-left: 14px;
+}
+.client-name {
+  font-size: 14px;
+  line-height: 14px;
+  margin-bottom: 0px;
+  padding-top: 6px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.add .client-name {
+  color: #fff;
+}
+.client-name.house {
+  padding-bottom: 6px;
+}
+a .client-name {
+  color: #333;
+}
+a .client-name:hover {
+  color: #333;
+}
+.time-stamp {
+  margin-left: 6px;
+  font-weight: 300;
+  color: #777;
+  font-size: 10px;
+}
+.add .time-stamp {
+  color: #fff;
+  opacity: 0.5;
+}
+.client-data-unit {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 20px;
+  margin-right: 14px;
+}
+.client-data-unit:last-child {
+  margin-right: 0px;
+}
+.data-number {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+  display: inline-block;
+  color: #777;
+}
+.new .data-number {
+  color: #000;
+}
+.add .data-number {
+  color: #fff;
+}
+.add-button {
+  font-size: 24px;
+  line-height: 24px;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+}
+.profile-box {
+  padding: 14px;
+}
+.profile-box .scores {
+  margin: 10px 0px 10px 0px;
+}
+.profile-box .scores table {
+  width: 220px;
+  text-align: center;
+  display: inline-block;
+}
+.profile-box .scores td {
+  border-left: 1px solid #ccc;
+  padding: 0px 12px 0px 12px;
+}
+.profile-box .scores td:first-child {
+  border-left: none;
+}
+.client-preferences td {
+  width: 50%;
+  vertical-align: top;
+}
+.client-preferences td:last-child {
+  padding-left: 10px;
+}
+.profile-nav {
+  width: 100%;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  margin-top: 10px;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  color: #777;
+}
+.profile-nav td {
+  border-left: 1px solid #e5e5e5;
+  padding: 10px;
+}
+.profile-nav td .active.glyphicon {
+  color: #2988cc;
 }
