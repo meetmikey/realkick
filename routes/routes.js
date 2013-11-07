@@ -10,7 +10,6 @@ var winston = require('../lib/winstonWrapper').winston
 var routes = this;
 
 exports.getCurrentUser = function( req, res ) {
-  listing = listingJSON;
   var shortId = req.query.userShortId;
   UserModel.findOne({shortId: shortId}, function(mongoErr, user) {
     if ( mongoErr ) {
@@ -28,7 +27,8 @@ exports.getCurrentUser = function( req, res ) {
 exports.getListing = function( req, res ) {
   var shortId = req.query.userShortId;
   var shortListingId = req.params.id;
-  listing = listingJSON[shortListingId];
+  var listing = listingJSON[shortListingId];
+  console.log('shortListingId: ', shortListingId, ', listin: ', listing)
   if ( ! listing ) {
     res.send(400);
     return;
@@ -41,7 +41,6 @@ exports.getListing = function( req, res ) {
       winston.doError( 'no user', {}, res );
 
     } else {
-      console.log('USER: ', {user: user})
       listingUtils.getAugmentedListingData( listing, user, function(err, augmentedListingData) {
         if ( err ) {
           winston.handleError( err, res );
@@ -54,6 +53,7 @@ exports.getListing = function( req, res ) {
 
             } else {
               listing.comments = comments;
+              console.log('SHORT LISTING ID: ', shortListingId, ', sending listing: ', listing)
               res.send( listing );
             }
           });

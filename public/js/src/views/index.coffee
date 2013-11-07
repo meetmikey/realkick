@@ -24,24 +24,13 @@ template = """
                   
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner">
-                    <div class="item active">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_101_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_A01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_B01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_C01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_D01_81.jpg">
-                    </div>
-                    <div class="item">
-                      <img src="http://tempo5.sandicor.com/SNDImages/54/130027318_G01_81.jpg">
-                    </div>
+                    {{#each photos}}
+                      {{#if Location}}
+                        <div class="item {{#if @index}}{{else}} active{{/if}}">
+                          <img src="{{Location}}">
+                        </div>
+                      {{/if}}
+                    {{/each}}
                   </div>
 
                   <!-- Controls -->
@@ -170,7 +159,7 @@ template = """
 	
 	<div class="no super-box" id="noBox">
 		<div class="main-box">
-			<div class="reason-button">
+			<div class="reason-button goToNextListing">
 				price
 			</div>
 			<div class="reason-button goToNextListing">
@@ -201,7 +190,7 @@ template = """
 			<div class="reason-button goToNextListing">
 				call brian
 			</div>
-			<div class="reason-button goToStaticA">
+			<div class="reason-button goToStaticB">
 				book a viewing
 			</div>
 		</div>
@@ -234,11 +223,6 @@ template = """
 	</div>
  </div>
 </div>
-<script>
-$('#listing-carousel').carousel({
-  interval: 3000
-})
-</script>
 """
 
 class RealKick.View.Index extends RealKick.View.Base
@@ -251,7 +235,7 @@ class RealKick.View.Index extends RealKick.View.Base
     'click #maybeButton': 'showMaybe'
     'click #yesButton': 'showYes'
     'click .goToNextListing': 'goToNextListing'
-    'click .goToStaticA': 'goToStaticB'
+    'click .goToStaticB': 'goToStaticB'
 
   showNo: =>
     $('#noBox').css 'visibility', 'visible'
@@ -262,32 +246,51 @@ class RealKick.View.Index extends RealKick.View.Base
   showYes: =>
     $('#yesBox').css 'visibility', 'visible'
 
+  listings: []
+  listing: null
+  maxListings: 4
+
   goToNextListing: =>
     @listingId++
-    if @listingId > 4
+    if @listingId > @maxListings
       @listingId = 1
-    @fetchListing()
+    @listing = @listings[@listingId]
+    @render()
 
   goToStaticB: =>
     RealKick.Router.router.navigate 'b', {trigger:true}
 
-  fetchListing: =>
-    @listing = new RealKick.Model.Listing
-      id: @listingId
-    @commentsCollection = new RealKick.Collection.Comment
-    @listing.fetch
-      success: () =>
-        @commentsCollection.reset @listing.get('comments')
-        @renderTemplate()
-      error: () =>
-        console.log 'failed to get listing: ', @listing
+  postInitialize: =>
+    @initializeListings()
+    @fetchListings()
+    @listing = 1
+    @listing = @listings[@listingId]
 
-  postRender: =>
-    @fetchListing()
+  initializeListings: =>
+    listings = []
+    for i in [1..@maxListings]
+      @listings[i] = new RealKick.Model.Listing
+        id: i
+    @listing = @listings[@listingId]
+
+  fetchListings: =>
+    for i in [1..@maxListings]
+      @listings[i] = new RealKick.Model.Listing
+        id: i
+      @listings[i].fetch
+        success: () =>
+          @renderTemplate()
 
   getTemplateData: =>
     data = {}
     if @listing
       data = @listing.decorate()
-      data.comments = _.invoke( @commentsCollection.models, 'decorate' )
+      commentsCollection = new RealKick.Collection.Comment
+      commentsCollection.set @listing.get('comments')
+      data.comments = _.invoke( commentsCollection.models, 'decorate' )
     data
+
+  postRender: =>
+    console.log 'postRender, carousel: ', $('#listing-carousel')
+    $('#listing-carousel').carousel
+      interval: 3000

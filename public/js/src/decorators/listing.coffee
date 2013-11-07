@@ -32,6 +32,8 @@ class ListingDecorator
 
   getListingPrice: (model) =>
     listingPrice = model.get 'ListingPrice'
+    if not listingPrice
+      return 0
     length = listingPrice.length
     if length > 6
       listingPrice = listingPrice.substring( 0, length-6 ) + ',' + listingPrice.substring(length-6, length-3) + ',' + listingPrice.substring(length-3)
