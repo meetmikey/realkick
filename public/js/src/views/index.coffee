@@ -6,6 +6,22 @@ template = """
 	  	<div class="header">
 	  		700 West E Street
 	  	</div>
+	  	<table class="essential-data">
+	  		<tr>
+	  			<td>
+	  				$3,496,000
+	  			</td>
+	  			<td>
+	  				4 BR
+	  			</td>
+	  			<td>
+	  				5 BR
+	  			</td>
+	  			<td>
+	  				590 SQFT 
+	  			</td>
+	  		</tr>
+	  	</table>
 	  	<div id="listing-carousel" class="carousel slide">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
@@ -38,7 +54,7 @@ template = """
 
 		  <!-- Controls -->
 		  <a class="left carousel-control" href="#listing-carousel" data-slide="prev">
-		     <span class="glyphicon glyphicon-chevron-left"></span> 
+		     <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
 		  </a>
 		  <a class="right carousel-control" href="#listing-carousel" data-slide="next">
 		    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->

@@ -41,3 +41,36 @@ background-image: none;
 background-repeat: none;
 filter: none;
 }
+
+#listing-carousel {
+	& .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+		width: 100%;
+		height: auto;
+	}
+
+	& .item {
+		height: 316px;
+		overflow: hidden;
+	}
+}
+
+.header {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 100;
+	text-transform: uppercase;
+	margin-top: 4px;
+}
+
+.essential-data {
+	width: 90%;
+	margin: 0px auto 8px auto;
+	& tr {
+		width: 100%;
+	}
+	& td {
+		text-align: center;
+		font-weight: 700;
+
+	}
+}
