@@ -19,8 +19,8 @@ class ListingDecorator
     object.yearBuilt = model.get 'YearHomeBuilt'
     object.publicRemarks = model.get('PublicRemarks')?.split(' ')?.slice(0, 39)?.join(' ') + '...'
     object.augmentedData = model.get 'augmentedData'
+    #console.log 'walk score: ', object.augmentedData.walkScore
 
-    console.log 'decorating model: ', model
     object
 
   getNumberOfBaths: (model) =>

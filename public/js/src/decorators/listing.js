@@ -30,7 +30,6 @@
       object.yearBuilt = model.get('YearHomeBuilt');
       object.publicRemarks = ((_ref = model.get('PublicRemarks')) != null ? (_ref1 = _ref.split(' ')) != null ? (_ref2 = _ref1.slice(0, 39)) != null ? _ref2.join(' ') : void 0 : void 0 : void 0) + '...';
       object.augmentedData = model.get('augmentedData');
-      console.log('decorating model: ', model);
       return object;
     };
 
