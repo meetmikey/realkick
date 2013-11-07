@@ -107,7 +107,7 @@ template = """
 						<div class="score">
 							{{augmentedData.walkScore.walkscore}}
 						</div>
-						<div class="label">
+						<div class="score-label">
 							walking
 						</div>
 					</td>
@@ -115,7 +115,7 @@ template = """
 						<div class="score">
 							93
 						</div>
-						<div class="label">
+						<div class="score-label">
 							safety
 						</div>
 					</td>
@@ -123,7 +123,7 @@ template = """
 						<div class="score">
 							85
 						</div>
-						<div class="label">
+						<div class="score-label">
 							transit
 						</div>
 					</td>
@@ -131,7 +131,7 @@ template = """
 						<div class="score">
 							40
 						</div>
-						<div class="label">
+						<div class="score-label">
 							schools
 						</div>
 					</td>
@@ -155,6 +155,24 @@ template = """
 			{{/each}}
 		</div>
 	</div>
+	
+	<div class="no super-box">
+		<div class="main-box">
+			<div class="reason-button">
+				price
+			</div>
+			<div class="reason-button">
+				neighborhood
+			</div>
+			<div class="reason-button">
+				floorplan
+			</div>
+			<div class="reason-button">
+				other
+			</div>
+		</div>
+	</div>
+
 	<div class="footer">
 		<div class="agent-comment">
 			<div class="agent">

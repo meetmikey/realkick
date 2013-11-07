@@ -6,7 +6,7 @@
 @yellow: #F7AD5E;
 @light-green: #9AD685;
 @green: #52CC7E;
-@light-blue: #62CBFF;
+@light-blue: #daeaf6;
 
 body {
   background-color: #fff;
@@ -26,7 +26,7 @@ body {
 	height: 792px;
 	left: 40%;
 	padding-left: -210px;
-	top: 5%;
+	top: 3%;
 	}
 
 .fake-screen {
@@ -85,7 +85,7 @@ filter: none;
 	& .text {
 	color: #000;
 	opacity: 1;
-	font-family: @brand;
+	font-family: @brand2;
 	font-size: 24px;
 	line-height: 24px;
 	padding: 4px 0px 10px 0px;
@@ -143,13 +143,14 @@ img.ios-header {
 .footer {
 	height: 54px;
 	position: fixed;
-	top: 662px;
+	top: 598px;
 	background-color: #fff;
-	border-top: #333 1px solid;
+	
 	width: 316px;
 	& table {
 		width: 316px;
 		text-align: center;
+		background-color:#f0f0f0;
 		 & td {
 		 	font-size: 28px;
 		 	line-height: 28px;
@@ -162,12 +163,29 @@ img.ios-header {
 		 	}
 		 	&.no {
 		 		color: @red;
+		 		&:active {
+		 			background-color: @red;
+		 			color: #fff;
+		 		}
 		 	}
 		 	&.maybe {
 		 		color:@orange;
+		 		&:active {
+		 			background-color: @orange;
+		 			color: #fff;
+		 		}
 		 	}
 		 	&.yes {
 		 		color:@green;
+		 		&:active {
+		 			background-color: @green;
+		 			color: #fff;
+		 		}
+		 	}
+		 	&:hover {
+		 		cursor: pointer;
+		 		background-color: #fff;
+
 		 	}
 		 }
 	}
@@ -176,19 +194,28 @@ img.ios-header {
 .commute {
 	margin-left: 10px;
 	display: block;
-	margin-bottom: 2px;
+	margin-bottom: 6px;
 	& .icon {
 		width: 30px;
 		height: 24px;
 		display: inline-block;
 		float: left;
 		background-repeat:no-repeat;
-		&.bike {
+		&.bicycling {
 			background-image:url('../img/icon-bike.png');
 		}
 		&.check {
 			background-image:url('../img/icon-check.png');
 			background-position: 5px 0px;
+		}
+		&.driving {
+			background-image:url('../img/icon-car.png');
+		}
+		&.driving {
+			background-image:url('../img/icon-car.png');
+		}
+		&.transit {
+			background-image:url('../img/icon-bus.png');
 		}
 	}
 	& .time {
@@ -204,14 +231,31 @@ img.ios-header {
 }
 
 .scores {
-	margin: 0px 10px 0px 10px;
+	margin: 10px 0px 10px 0px;
 	& table {
 		width: 100%;
 		text-align: center;
 	}
-	& .label {
-		color: #000;
+	& td {
+		border-left: 1px solid #ccc;
+		&:first-child {
+			border-left: none;
+		}
 	}
+}
+
+.score {
+	font-size: 36px;
+	font-family: @brand2;
+	line-height: 36px;
+}
+
+.score-label {
+	margin-top: 4px;
+	font-size: 10px;
+	line-height: 10px;
+	text-transform: uppercase;
+	color: #777;
 }
 
 .public-remarks {
@@ -234,18 +278,45 @@ img.ios-header {
 }
 
 .agent {
-	width: 40px;
+	width: 50px;
 	float: left;
 	display: inline-block;
 	& img {
-		width: 40px;
+		width: 100%;
 	}
 }
 
 .comment {
-	padding: 4px 10px 0px 10px;
+	padding: 6px 10px 0px 10px;
 	display: inline-block;
 	float: left;
 	position: relative;
+	width: 266px;
+	font-size: 14px;
+	background-color: @blue;
+	color: #fff;
+	height: 50px;
+}
+
+/* ------------ DIALOGUE BOX ------------------- */
+
+.super-box {
+	position: fixed;
+	z-index: 10;
+	background-color: #000;
+	opacity: 0.6;
+	width:316px;
+	height:559px;
+	display: block;
+	top: 89px;
+}
+
+.main-box {
 	width: 276px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fff;
+	padding: 20px;
+	opacity: 1;
+	margin-top: 120px;
 }
