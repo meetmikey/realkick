@@ -1,5 +1,5 @@
 template = """
-<a href="#b">
+<a href="#c">
 	<div class="fake-phone">
 	  <div class="fake-screen disable">
 		<img style="width:100%;" src="img/agent-alert.png"       
