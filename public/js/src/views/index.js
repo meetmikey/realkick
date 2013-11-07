@@ -52,7 +52,7 @@
 
     Index.prototype.listing = null;
 
-    Index.prototype.maxListings = 4;
+    Index.prototype.maxListings = 3;
 
     Index.prototype.goToNextListing = function() {
       this.listingId++;

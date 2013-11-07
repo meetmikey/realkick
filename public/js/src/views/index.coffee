@@ -261,7 +261,7 @@ class RealKick.View.Index extends RealKick.View.Base
 
   listings: []
   listing: null
-  maxListings: 4
+  maxListings: 3
 
   goToNextListing: =>
     @listingId++
