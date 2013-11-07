@@ -10,7 +10,6 @@ var routes = this;
 exports.getListing = function( req, res ) {
   listing = listingJSON;
   var shortId = req.query.userShortId;
-  console.log('shortId: ', shortId);
   UserModel.findOne({shortId: shortId}, function(mongoErr, user) {
     if ( mongoErr ) {
       winston.doMongoError( mongoErr, {}, res );

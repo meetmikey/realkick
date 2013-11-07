@@ -10,5 +10,4 @@ class RealKick.Model.Base extends Backbone.Model
     options.data = options.data || {}
     RealKick.Helper.LocalStore.set 'userShortId', 1
     options.data.userShortId = RealKick.Helper.LocalStore.get 'userShortId'
-    console.log 'options: ', options
     super options
