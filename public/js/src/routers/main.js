@@ -11,6 +11,16 @@
       this.render = __bind(this.render, this);
       this.scrollToTop = __bind(this.scrollToTop, this);
       this.renderLayout = __bind(this.renderLayout, this);
+      this.staticJ = __bind(this.staticJ, this);
+      this.staticI = __bind(this.staticI, this);
+      this.staticH = __bind(this.staticH, this);
+      this.staticG = __bind(this.staticG, this);
+      this.staticF = __bind(this.staticF, this);
+      this.staticE = __bind(this.staticE, this);
+      this.staticD = __bind(this.staticD, this);
+      this.staticC = __bind(this.staticC, this);
+      this.staticB = __bind(this.staticB, this);
+      this.staticA = __bind(this.staticA, this);
       this.listing = __bind(this.listing, this);
       this.index = __bind(this.index, this);
       this.initialize = __bind(this.initialize, this);
@@ -19,7 +29,17 @@
 
     Main.prototype.routes = {
       '': 'index',
-      'listing/:listingId': 'listing'
+      'listing/:listingId': 'listing',
+      'a': 'staticA',
+      'b': 'staticB',
+      'c': 'staticC',
+      'd': 'staticD',
+      'e': 'staticE',
+      'f': 'staticF',
+      'g': 'staticG',
+      'h': 'staticH',
+      'i': 'staticI',
+      'j': 'staticJ'
     };
 
     Main.prototype.initialize = function() {};
@@ -34,6 +54,46 @@
       return this.render('Listing', {
         listingId: listingId
       });
+    };
+
+    Main.prototype.staticA = function() {
+      return this.render('Static.A');
+    };
+
+    Main.prototype.staticB = function() {
+      return this.render('Static.B');
+    };
+
+    Main.prototype.staticC = function() {
+      return this.render('Static.C');
+    };
+
+    Main.prototype.staticD = function() {
+      return this.render('Static.D');
+    };
+
+    Main.prototype.staticE = function() {
+      return this.render('Static.E');
+    };
+
+    Main.prototype.staticF = function() {
+      return this.render('Static.F');
+    };
+
+    Main.prototype.staticG = function() {
+      return this.render('Static.G');
+    };
+
+    Main.prototype.staticH = function() {
+      return this.render('Static.H');
+    };
+
+    Main.prototype.staticI = function() {
+      return this.render('Static.I');
+    };
+
+    Main.prototype.staticJ = function() {
+      return this.render('Static.J');
     };
 
     Main.prototype.renderLayout = function() {

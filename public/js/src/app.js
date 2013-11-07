@@ -8,7 +8,8 @@
     Helper: {},
     Router: {},
     View: {
-      MainLayout: {}
+      MainLayout: {},
+      Static: {}
     },
     getUserShortId: function() {
       var userShortId;

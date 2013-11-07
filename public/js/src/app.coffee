@@ -7,6 +7,7 @@ window.RealKick =
   Router: {}
   View:
     MainLayout: {}
+    Static: {}
 
   getUserShortId: ->
     userShortId = RealKick.Helper.LocalStore.get 'userShortId'

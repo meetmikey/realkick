@@ -2,6 +2,16 @@ class RealKick.Router.Main extends Backbone.Router
   routes:
     '': 'index'
     'listing/:listingId': 'listing'
+    'a': 'staticA'
+    'b': 'staticB'
+    'c': 'staticC'
+    'd': 'staticD'
+    'e': 'staticE'
+    'f': 'staticF'
+    'g': 'staticG'
+    'h': 'staticH'
+    'i': 'staticI'
+    'j': 'staticJ'
 
   initialize: =>
 
@@ -12,6 +22,27 @@ class RealKick.Router.Main extends Backbone.Router
   listing: (listingId) =>
     @render 'Listing',
       listingId: listingId
+
+  staticA: =>
+    @render 'Static.A'
+  staticB: =>
+    @render 'Static.B'
+  staticC: =>
+    @render 'Static.C'
+  staticD: =>
+    @render 'Static.D'
+  staticE: =>
+    @render 'Static.E'
+  staticF: =>
+    @render 'Static.F'
+  staticG: =>
+    @render 'Static.G'
+  staticH: =>
+    @render 'Static.H'
+  staticI: =>
+    @render 'Static.I'
+  staticJ: =>
+    @render 'Static.J'
 
   renderLayout: =>
     unless @_layout
