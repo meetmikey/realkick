@@ -66,15 +66,17 @@ template = """
 	  			</td>
 	  		</tr>
 	  	</table>
-	  	<div class="commute clearfix">
-	  		{{#each augmentedData.googleMaps}}
-		  		<div class="icon bike">
+
+  		{{#each augmentedData.googleMaps}}
+		  	<div class="commute clearfix">
+		  		<div class="icon {{mode}}">
 		  		</div>
 		  		<div class="time">
-		  			{{this.duration}} to {{@key}}
+		  			{{this.data.duration.text}} to {{this.name}}
 		  		</div>
-	  		{{/each}}
 	  	</div>
+  		{{/each}}
+
 	  	<div class="commute clearfix">
 	  		<div class="icon check">
 	  		</div>

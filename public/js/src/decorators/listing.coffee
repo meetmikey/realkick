@@ -15,8 +15,9 @@ class ListingDecorator
     object.listingDate = model.get 'ListingDate'
     object.hasGarageParking = if model.get('NumberOfGarageSpaces') then true else false
     object.yearBuilt = model.get 'YearHomeBuilt'
-    object.publicRemarks = model.get 'PublicRemarks'
+    object.publicRemarks = model.get('PublicRemarks')?.split(' ')?.slice(0, 39)?.join(' ') + '...'
     object.augmentedData = model.get 'augmentedData'
+    console.log object
     object
 
   getNumberOfBaths: (model) =>

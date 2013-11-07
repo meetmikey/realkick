@@ -113,8 +113,11 @@ img.ios-header {
   float: left;
   background-repeat: no-repeat;
 }
-.commute .icon.bike {
+.commute .icon.bicycling {
   background-image: url('../img/icon-bike.png');
+}
+.commute .icon.driving {
+  background-image: url('../img/icon-car.png');
 }
 .commute .icon.check {
   background-image: url('../img/icon-check.png');
