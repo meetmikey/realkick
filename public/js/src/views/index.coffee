@@ -171,11 +171,14 @@ template = """
 				price
 			</div>
 			<div class="reason-button goToNextListing">
-				neighborhood
+				location
 			</div>
 			<div class="reason-button goToNextListing">
-				floorplan
+				aesthetic
 			</div>
+      <div class="reason-button goToNextListing">
+        layout
+      </div>
 			<div class="reason-button goToNextListing">
 				other
 			</div>
@@ -185,21 +188,19 @@ template = """
 	<div class="maybe super-box" id="maybeBox">
 		<div class="main-box">
 			<div class="reason-button goToNextListing">
-				save for later
-			</div>
-			<div class="reason-button goToNextListing">
-				ask brian
+				ask brian a question
 			</div>
 		</div>
 	</div>
 
-	<div class="yes super-box" id="yesBox">
+  <div class="yes super-box" id="yesBox">
+    <div>Open house Sunday at 2pm</div>
 		<div class="main-box">
 			<div class="reason-button goToNextListing">
-				call brian
+        Add to calendar
 			</div>
 			<div class="reason-button goToStaticB">
-				book a viewing
+				Schedule a visit
 			</div>
 		</div>
 	</div>
