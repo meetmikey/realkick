@@ -291,6 +291,5 @@ class RealKick.View.Index extends RealKick.View.Base
     data
 
   postRender: =>
-    console.log 'postRender, carousel: ', $('#listing-carousel')
     $('#listing-carousel').carousel
       interval: 3000

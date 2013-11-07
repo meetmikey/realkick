@@ -117,7 +117,6 @@
     };
 
     Index.prototype.postRender = function() {
-      console.log('postRender, carousel: ', $('#listing-carousel'));
       return $('#listing-carousel').carousel({
         interval: 3000
       });
