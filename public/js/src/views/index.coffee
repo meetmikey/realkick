@@ -186,13 +186,14 @@ template = """
 	</div>
 
 	<div class="maybe super-box" id="maybeBox">
-		<div class="main-box">
+		<div class="main-box ask">
       <form role="form">
           <textarea class="form-control" rows="4"></textarea>
       </form>
 			<div class="reason-button goToNextListing">
 				ask brian
 			</div>
+      <div class="keyboard"><img src="img/keyboard.jpg"></div>
 		</div>
 	</div>
 
