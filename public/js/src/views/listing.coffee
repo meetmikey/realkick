@@ -9,6 +9,11 @@ template = """
   <div>Has garage parking? {{#if hasGarageParking}}yes{{else}}no{{/if}}</div>
   <div>Year built: {{yearBuilt}}</div>
 
+  {{#each comments}}
+    <img src='{{userImageURL}}' />
+    {{text}}
+  {{/each}}  
+
   {{#each photos}}
     <img src='{{Location}}' />
   {{/each}}
@@ -23,15 +28,17 @@ class RealKick.View.Listing extends RealKick.View.Base
   postInitialize: =>
     @listing = new RealKick.Model.Listing
       id: @listingId
+    @commentsCollection = new RealKick.Collection.Comment
 
   postRender: =>
     @listing.fetch
-      
       success: () =>
+        @commentsCollection.set @listing.get('comments')
         @renderTemplate()
       error: () =>
         console.log 'failed to get listing: ', @listing
 
   getTemplateData: =>
     data = @listing.decorate()
+    data.comments = _.invoke( @commentsCollection.models, 'decorate' )
     data

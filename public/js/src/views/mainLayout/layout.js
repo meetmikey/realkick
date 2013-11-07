@@ -11,7 +11,6 @@
     __extends(Layout, _super);
 
     function Layout() {
-      this.postRender = __bind(this.postRender, this);
       this.preInitialize = __bind(this.preInitialize, this);
       this.scrollToAnchor = __bind(this.scrollToAnchor, this);
       Layout.__super__.constructor.apply(this, arguments);
@@ -33,11 +32,6 @@
 
     Layout.prototype.preInitialize = function() {
       return this.setElement($('#rkContainer'));
-    };
-
-    Layout.prototype.postRender = function() {
-      var selector;
-      return selector = '.fake-screen';
     };
 
     return Layout;

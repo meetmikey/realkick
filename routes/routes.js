@@ -2,8 +2,10 @@ var winston = require('../lib/winstonWrapper').winston
     , helpers = require ('../lib/helpers')
     , constants = require ('../constants')
     , _ = require ('underscore')
+    , async = require('async')
     , listingUtils = require('../lib/listingUtils')
     , UserModel = require('../schema/user').UserModel
+    , CommentModel = require('../schema/comment').CommentModel
 
 var routes = this;
 
@@ -26,6 +28,7 @@ exports.getCurrentUser = function( req, res ) {
 exports.getListing = function( req, res ) {
   listing = listingJSON;
   var shortId = req.query.userShortId;
+  var shortListingId = req.params.id;
   UserModel.findOne({shortId: shortId}, function(mongoErr, user) {
     if ( mongoErr ) {
       winston.doMongoError( mongoErr, {}, res );
@@ -34,17 +37,57 @@ exports.getListing = function( req, res ) {
       winston.doError( 'no user', {}, res );
 
     } else {
+      console.log('USER: ', {user: user})
       listingUtils.getAugmentedListingData( listing, user, function(err, augmentedListingData) {
         if ( err ) {
           winston.handleError( err, res );
 
         } else {
           listing.augmentedData = augmentedListingData;
-          res.send( listing );
+          routes.getComments( shortListingId, function(err, comments) {
+            if ( err ) {
+              winston.handleError( err, res );
+
+            } else {
+              listing.comments = comments;
+              res.send( listing );
+            }
+          });
         }
       });
     }
   })
+}
+
+exports.getComments = function( shortListingId, callback ) {
+  CommentModel.find({shortListingId: shortListingId}, function(mongoErr, comments) {
+    if ( mongoErr ) {
+      callback( winston.makeMongoError( mongoErr ) );
+
+    } else {
+      async.map( comments, function(comment, mapCallback) {
+        UserModel.findOne({shortId: comment.shortUserId}, function(mongoErr, user) {
+          if ( mongoErr ) {
+            mapCallback( winston.makeMongoError( mongoErr ) );
+
+          } else if ( ! user ) {
+            mapCallback( null, comment );
+
+          } else {
+            comment.userImageURL = user.imageURL;
+            mapCallback( null, comment );
+          }
+        });
+      }, function(err, comments) {
+        if ( err ) {
+          callback( err );
+
+        } else {
+          callback( null, comments );
+        }
+      });
+    }
+  });
 }
 
 var listingJSON = {

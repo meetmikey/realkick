@@ -11,6 +11,7 @@ var commuteSchema = new Schema ({
 var User = new Schema({
     shortId: {type: Number}
   , email: {type: String, unique: true, lowercase: true}
+  , imageURL: {type: String}
   , owner1: {type: String}
   , owner2: {type: String}
   , commutes: {type: [commuteSchema], default :[]}
