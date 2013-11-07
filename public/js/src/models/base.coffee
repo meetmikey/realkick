@@ -8,6 +8,5 @@ class RealKick.Model.Base extends Backbone.Model
   fetch: (options) =>
     options = options || {}
     options.data = options.data || {}
-    RealKick.Helper.LocalStore.set 'userShortId', 1
-    options.data.userShortId = RealKick.Helper.LocalStore.get 'userShortId'
+    options.data.userShortId = RealKick.globalUser.get 'shortId'
     super options

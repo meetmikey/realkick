@@ -49,6 +49,10 @@ appInitUtils.initApp( 'realkick', initActions, conf, function() {
     routes.getListing(req, res);
   });
 
+  app.get('/user', function(req, res) {
+    routes.getCurrentUser(req, res);
+  });
+
 
   app.listen(conf.listenPort);
 });
