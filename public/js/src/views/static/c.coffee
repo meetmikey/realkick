@@ -52,11 +52,11 @@ template = """
 
 	   		<div class="client clearfix">
    				<div class="client-profile">
-   					<img src="img/richard.png">
+   					<img src="img/alex.jpg">
    				</div>
    				<div class="client-info">
 	   				<div class="client-name">
-	   					Richard A. Smith <span class="time-stamp">8 hours ago</span>
+	   					Alex Perriello <span class="time-stamp">8 hours ago</span>
 	   				</div>
 	   				<div class="client-data">
 	   					<div class="client-data-unit">
