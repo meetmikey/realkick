@@ -38,7 +38,7 @@ template = """
 
 		  <!-- Controls -->
 		  <a class="left carousel-control" href="#listing-carousel" data-slide="prev">
-		    <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
+		     <span class="glyphicon glyphicon-chevron-left"></span> 
 		  </a>
 		  <a class="right carousel-control" href="#listing-carousel" data-slide="next">
 		    <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
