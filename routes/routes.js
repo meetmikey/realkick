@@ -15,7 +15,7 @@ exports.getListing = function( req, res ) {
 
     } else {
       listing.augmentedData = augmentedListingData;
-      res.send( augmentedListing );
+      res.send( listing );
     }
   });
 }

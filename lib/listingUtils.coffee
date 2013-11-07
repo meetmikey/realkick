@@ -7,6 +7,7 @@ GoogleMaps = require './google_maps'
 Yelp = require './yelp'
 CraigslistScraper = require './craigslist_scraper'
 FillTemplate = require './fill_template'
+winston = require('./winstonWrapper').winston
 
 listingUtils = this
 
@@ -57,4 +58,4 @@ exports.getAugmentedListingData = (listing, user, callback) =>
       yelp : results[3]
 
     console.log apiData
-    callback apiData
+    callback null, apiData
