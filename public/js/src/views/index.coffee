@@ -1,8 +1,5 @@
 template = """
 
-<div class="fake-phone">
-  <div class="fake-screen">
-
           <div class="header clearfix">
                 <div class="ios-header clearfix"><img src="img/ios-top.png" style="width:316px;"></div>
                                 <div class="header-nav clearfix">
@@ -235,8 +232,15 @@ template = """
 			</tr>
 		</table>
 	</div>
- </div>
-</div>
+"""
+
+fakePhoneLayoutPrefix = """
+<div class="fake-phone">
+  <div class="fake-screen">
+"""
+
+fakePhoneLayoutSuffix = """
+  </div></div>
 """
 
 class RealKick.View.Index extends RealKick.View.Base
@@ -263,6 +267,12 @@ class RealKick.View.Index extends RealKick.View.Base
   listings: []
   listing: null
   maxListings: 3
+
+  getTemplate: =>
+    templateHTML = @templateHTML
+    if RealKick.Constants.fakePhoneLayout
+      templateHTML = fakePhoneLayoutPrefix + templateHTML + fakePhoneLayoutSuffix
+    Handlebars.compile(templateHTML)
 
   goToNextListing: =>
     @listingId++
