@@ -321,7 +321,7 @@ class RealKick.View.Index extends RealKick.View.Base
     #swiping...
     $('#listing-carousel').swipe
       swipeLeft: (event, direction, distance, duration, fingerCount) =>
-        $(this).parent().carousel('prev')
+        $('#listing-carousel').carousel('prev')
       swipeRight: () =>
-        $(this).parent().carousel('next')
-      threshold:0 #Default is 75px, set to 0 for demo so any distance triggers swipe
+        $('#listing-carousel').carousel('next')
+      #threshold:0 #Default is 75px, set to 0 for demo so any distance triggers swipe

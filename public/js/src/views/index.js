@@ -137,12 +137,11 @@
       });
       return $('#listing-carousel').swipe({
         swipeLeft: function(event, direction, distance, duration, fingerCount) {
-          return $(_this).parent().carousel('prev');
+          return $('#listing-carousel').carousel('prev');
         },
         swipeRight: function() {
-          return $(_this).parent().carousel('next');
-        },
-        threshold: 0
+          return $('#listing-carousel').carousel('next');
+        }
       });
     };
 
