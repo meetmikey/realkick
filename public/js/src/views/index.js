@@ -131,8 +131,18 @@
     };
 
     Index.prototype.postRender = function() {
-      return $('#listing-carousel').carousel({
+      var _this = this;
+      $('#listing-carousel').carousel({
         interval: 3000
+      });
+      return $('#listing-carousel').swipe({
+        swipeLeft: function(event, direction, distance, duration, fingerCount) {
+          return $(_this).parent().carousel('prev');
+        },
+        swipeRight: function() {
+          return $(_this).parent().carousel('next');
+        },
+        threshold: 0
       });
     };
 
