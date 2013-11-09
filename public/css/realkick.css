@@ -1,3 +1,7 @@
+.carousel-inner > .item {
+  -webkit-transition: 0.2s ease-in-out left;
+  transition: 0.2s ease-in-out left;
+}
 img {
   width: 100%;
   height: auto;
