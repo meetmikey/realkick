@@ -15,6 +15,7 @@
     __extends(Index, _super);
 
     function Index() {
+      this.setupCarousel = __bind(this.setupCarousel, this);
       this.postRender = __bind(this.postRender, this);
       this.getCarouselElement = __bind(this.getCarouselElement, this);
       this.getTemplateData = __bind(this.getTemplateData, this);
@@ -112,7 +113,8 @@
         });
         _results.push(this.listings[i].fetch({
           success: function() {
-            return _this.renderTemplate();
+            _this.renderTemplate();
+            return _this.setupCarousel();
           }
         }));
       }
@@ -132,10 +134,12 @@
     };
 
     Index.prototype.getCarouselElement = function() {
-      return $('#listing-carousel');
+      return $('.carousel');
     };
 
-    Index.prototype.postRender = function() {
+    Index.prototype.postRender = function() {};
+
+    Index.prototype.setupCarousel = function() {
       var carouselElement,
         _this = this;
       carouselElement = this.getCarouselElement();
@@ -143,10 +147,12 @@
         interval: 3000
       });
       carouselElement.on('swipeleft', function(e) {
-        return carouselElement.prev();
+        alert('swipe left!');
+        return carouselElement.carousel('prev');
       });
       return carouselElement.on('swiperight', function(e) {
-        return carouselElement.next();
+        alert('swipe right!');
+        return carouselElement.carousel('next');
       });
     };
 

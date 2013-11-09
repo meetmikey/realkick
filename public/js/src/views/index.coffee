@@ -304,6 +304,7 @@ class RealKick.View.Index extends RealKick.View.Base
       @listings[i].fetch
         success: () =>
           @renderTemplate()
+          @setupCarousel()
 
   getTemplateData: =>
     data = {}
@@ -315,16 +316,20 @@ class RealKick.View.Index extends RealKick.View.Base
     data
 
   getCarouselElement: =>
-    $('#listing-carousel')
+    $('.carousel')
 
   postRender: =>
+
+  setupCarousel: =>
     carouselElement = @getCarouselElement()
 
     carouselElement.carousel
       interval: 3000
 
     carouselElement.on 'swipeleft', (e) =>
-      carouselElement.prev()
+      alert('swipe left!')
+      carouselElement.carousel('prev')
 
     carouselElement.on 'swiperight', (e) =>
-      carouselElement.next()
+      alert('swipe right!')
+      carouselElement.carousel('next')
