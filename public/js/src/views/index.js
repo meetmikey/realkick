@@ -16,7 +16,6 @@
 
     function Index() {
       this.setupCarousel = __bind(this.setupCarousel, this);
-      this.postRender = __bind(this.postRender, this);
       this.getCarouselElement = __bind(this.getCarouselElement, this);
       this.getTemplateData = __bind(this.getTemplateData, this);
       this.fetchListings = __bind(this.fetchListings, this);
@@ -76,7 +75,8 @@
         this.listingId = 1;
       }
       this.listing = this.listings[this.listingId];
-      return this.render();
+      this.renderTemplate();
+      return this.setupCarousel();
     };
 
     Index.prototype.goToStaticB = function() {
@@ -137,8 +137,6 @@
       return $('.carousel');
     };
 
-    Index.prototype.postRender = function() {};
-
     Index.prototype.setupCarousel = function() {
       var carouselElement,
         _this = this;
@@ -146,13 +144,17 @@
       carouselElement.carousel({
         interval: 3000
       });
-      carouselElement.on('swipeleft', function(e) {
+      $('.item').on('swipeleft', function(e) {
+        e.preventDefault();
         alert('swipe left!');
-        return carouselElement.carousel('prev');
+        carouselElement.carousel('prev');
+        return false;
       });
-      return carouselElement.on('swiperight', function(e) {
+      return $('.item').on('swiperight', function(e) {
+        e.preventDefault();
         alert('swipe right!');
-        return carouselElement.carousel('next');
+        carouselElement.carousel('next');
+        return false;
       });
     };
 

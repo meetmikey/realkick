@@ -279,7 +279,8 @@ class RealKick.View.Index extends RealKick.View.Base
     if @listingId > @maxListings
       @listingId = 1
     @listing = @listings[@listingId]
-    @render()
+    @renderTemplate()
+    @setupCarousel()
 
   goToStaticB: =>
     RealKick.Router.router.navigate 'b', {trigger:true}
@@ -318,18 +319,20 @@ class RealKick.View.Index extends RealKick.View.Base
   getCarouselElement: =>
     $('.carousel')
 
-  postRender: =>
-
   setupCarousel: =>
     carouselElement = @getCarouselElement()
 
     carouselElement.carousel
       interval: 3000
 
-    carouselElement.on 'swipeleft', (e) =>
+    $('.item').on 'swipeleft', (e) =>
+      e.preventDefault()
       alert('swipe left!')
       carouselElement.carousel('prev')
+      return false
 
-    carouselElement.on 'swiperight', (e) =>
+    $('.item').on 'swiperight', (e) =>
+      e.preventDefault()
       alert('swipe right!')
       carouselElement.carousel('next')
+      return false
