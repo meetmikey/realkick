@@ -144,17 +144,11 @@
       carouselElement.carousel({
         interval: 3000
       });
-      $('.item').on('swipeleft', function(e) {
-        e.preventDefault();
-        alert('swipe left!');
-        carouselElement.carousel('prev');
-        return false;
+      carouselElement.swiperight(function() {
+        return carouselElement.carousel('prev');
       });
-      return $('.item').on('swiperight', function(e) {
-        e.preventDefault();
-        alert('swipe right!');
-        carouselElement.carousel('next');
-        return false;
+      return carouselElement.swipeleft(function() {
+        return carouselElement.carousel('next');
       });
     };
 

@@ -325,14 +325,8 @@ class RealKick.View.Index extends RealKick.View.Base
     carouselElement.carousel
       interval: 3000
 
-    $('.item').on 'swipeleft', (e) =>
-      e.preventDefault()
-      alert('swipe left!')
+    carouselElement.swiperight () =>
       carouselElement.carousel('prev')
-      return false
 
-    $('.item').on 'swiperight', (e) =>
-      e.preventDefault()
-      alert('swipe right!')
+    carouselElement.swipeleft () =>
       carouselElement.carousel('next')
-      return false
