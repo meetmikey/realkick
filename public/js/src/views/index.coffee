@@ -314,14 +314,17 @@ class RealKick.View.Index extends RealKick.View.Base
       data.comments = _.invoke( commentsCollection.models, 'decorate' )
     data
 
+  getCarouselElement: =>
+    $('#listing-carousel')
+
   postRender: =>
-    $('#listing-carousel').carousel
+    carouselElement = @getCarouselElement()
+    
+    carouselElement.carousel
       interval: 3000
 
-    #swiping...
-    $('#listing-carousel').swipe
-      swipeLeft: (event, direction, distance, duration, fingerCount) =>
-        $('#listing-carousel').carousel('prev')
-      swipeRight: () =>
-        $('#listing-carousel').carousel('next')
-      #threshold:0 #Default is 75px, set to 0 for demo so any distance triggers swipe
+    carouselElement.on 'swipeleft', (e) =>
+      carouselElement.prev()
+
+    carouselElement.on 'swiperight', (e) =>
+      carouselElement.next()

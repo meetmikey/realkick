@@ -16,6 +16,7 @@
 
     function Index() {
       this.postRender = __bind(this.postRender, this);
+      this.getCarouselElement = __bind(this.getCarouselElement, this);
       this.getTemplateData = __bind(this.getTemplateData, this);
       this.fetchListings = __bind(this.fetchListings, this);
       this.initializeListings = __bind(this.initializeListings, this);
@@ -130,18 +131,22 @@
       return data;
     };
 
+    Index.prototype.getCarouselElement = function() {
+      return $('#listing-carousel');
+    };
+
     Index.prototype.postRender = function() {
-      var _this = this;
-      $('#listing-carousel').carousel({
+      var carouselElement,
+        _this = this;
+      carouselElement = this.getCarouselElement();
+      carouselElement.carousel({
         interval: 3000
       });
-      return $('#listing-carousel').swipe({
-        swipeLeft: function(event, direction, distance, duration, fingerCount) {
-          return $('#listing-carousel').carousel('prev');
-        },
-        swipeRight: function() {
-          return $('#listing-carousel').carousel('next');
-        }
+      carouselElement.on('swipeleft', function(e) {
+        return carouselElement.prev();
+      });
+      return carouselElement.on('swiperight', function(e) {
+        return carouselElement.next();
       });
     };
 

@@ -2,7 +2,7 @@
 
   _.extend(RealKick.Constants, {
     defaultUserShortId: 1,
-    fakePhoneLayout: false
+    fakePhoneLayout: true
   });
 
 }).call(this);
