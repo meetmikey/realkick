@@ -326,7 +326,9 @@ class RealKick.View.Index extends RealKick.View.Base
       interval: 3000
 
     carouselElement.swiperight () =>
+      carouselElement.carousel('pause')
       carouselElement.carousel('prev')
 
     carouselElement.swipeleft () =>
+      carouselElement.carousel('pause')
       carouselElement.carousel('next')

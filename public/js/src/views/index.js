@@ -145,9 +145,11 @@
         interval: 3000
       });
       carouselElement.swiperight(function() {
+        carouselElement.carousel('pause');
         return carouselElement.carousel('prev');
       });
       return carouselElement.swipeleft(function() {
+        carouselElement.carousel('pause');
         return carouselElement.carousel('next');
       });
     };
