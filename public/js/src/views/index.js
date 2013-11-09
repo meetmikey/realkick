@@ -63,7 +63,7 @@
     Index.prototype.getTemplate = function() {
       var templateHTML;
       templateHTML = this.templateHTML;
-      if (RealKick.Constants.fakePhoneLayout) {
+      if (!window.isMobileBrowser) {
         templateHTML = fakePhoneLayoutPrefix + templateHTML + fakePhoneLayoutSuffix;
       }
       return Handlebars.compile(templateHTML);

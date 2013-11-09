@@ -270,7 +270,7 @@ class RealKick.View.Index extends RealKick.View.Base
 
   getTemplate: =>
     templateHTML = @templateHTML
-    if RealKick.Constants.fakePhoneLayout
+    if not window.isMobileBrowser
       templateHTML = fakePhoneLayoutPrefix + templateHTML + fakePhoneLayoutSuffix
     Handlebars.compile(templateHTML)
 
@@ -319,7 +319,7 @@ class RealKick.View.Index extends RealKick.View.Base
 
   postRender: =>
     carouselElement = @getCarouselElement()
-    
+
     carouselElement.carousel
       interval: 3000
 
