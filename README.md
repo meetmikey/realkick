@@ -1,4 +1,4 @@
 realkick
 ========
 
-realkick
+realkick - realogy hackathon project
